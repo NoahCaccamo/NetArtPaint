@@ -22,7 +22,12 @@ namespace MiniPaint
 
         private void PlaceBid_Click(object sender, EventArgs e)
         {
-            string userIn = BidEntry.Text;
+            string userIn = UserBid.Text;
+
+        }
+
+        private void UserBid_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
@@ -38,10 +43,5 @@ namespace MiniPaint
                 frm.Show();
             }
     }
-
-        private void BidEntry_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
