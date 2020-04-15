@@ -68,6 +68,7 @@
     <Compile Include="Auction.Designer.cs">
       <DependentUpon>Auction.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">

@@ -411,6 +411,7 @@
             this.Name = "Draw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mini Paint by Anoop Sharma";
+            this.Load += new System.EventHandler(this.Draw_Load);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();

@@ -155,6 +155,7 @@ namespace MiniPaint
             newPacket.Type = (int)pType.SubmitPainting;
             client.send(newPacket);
             //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
+            this.Close();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -164,6 +165,11 @@ namespace MiniPaint
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
+        }
+
+        private void Draw_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
