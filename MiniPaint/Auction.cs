@@ -21,13 +21,12 @@ namespace MiniPaint
 
         private void PlaceBid_Click(object sender, EventArgs e)
         {
-            string userIn = UserBid.Text;
+            string userIn = BidEntry.Text;
 
         }
 
-        private void UserBid_TextChanged(object sender, EventArgs e)
+        private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
-
         }
 
         private void Auction_Load(object sender, EventArgs e)
