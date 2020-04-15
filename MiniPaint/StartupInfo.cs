@@ -16,5 +16,10 @@ namespace MiniPaint
         {
             InitializeComponent();
         }
+
+        private void JoinButton_Click(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
