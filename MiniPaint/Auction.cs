@@ -13,7 +13,7 @@ namespace MiniPaint
     public partial class Auction : Form
     {
 
-        PlayerInfo playerInfo = new PlayerInfo();
+        public PlayerInfo playerInfo = new PlayerInfo();
         public Auction()
         {
             InitializeComponent();
