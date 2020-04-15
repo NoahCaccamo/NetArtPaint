@@ -1,0 +1,5 @@
+C:\Users\ncaccamo\Downloads\MiniPaint\Common\bin\Debug\Common.dll
+C:\Users\ncaccamo\Downloads\MiniPaint\Common\bin\Debug\Common.pdb
+C:\Users\ncaccamo\Downloads\MiniPaint\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\ncaccamo\Downloads\MiniPaint\Common\obj\Debug\Common.dll
+C:\Users\ncaccamo\Downloads\MiniPaint\Common\obj\Debug\Common.pdb
