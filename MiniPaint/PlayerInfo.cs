@@ -9,7 +9,7 @@ namespace MiniPaint
     public class PlayerInfo
     {
         public string username;
-        public int money;
+        public int money = 1000;
         public string ip;
     }
 }
