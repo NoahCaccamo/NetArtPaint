@@ -62,10 +62,19 @@
     <Compile Include="Draw.Designer.cs">
       <DependentUpon>Draw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Auction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auction.Designer.cs">
+      <DependentUpon>Auction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auction.resx">
+      <DependentUpon>Auction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Draw.resx">
       <DependentUpon>Draw.cs</DependentUpon>

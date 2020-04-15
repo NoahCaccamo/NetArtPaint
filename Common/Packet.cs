@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Common
-
 {
     public class Packet
     {
@@ -14,6 +13,6 @@ namespace Common
         public byte[] Painting;
         public string Title;
         public string Description;
-
+        public int bid;
     }
 }

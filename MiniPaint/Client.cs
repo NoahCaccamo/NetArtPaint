@@ -45,6 +45,11 @@ namespace MiniPaint
             Console.WriteLine("Received: " + Encoding.ASCII.GetString(receivedData));
         }
 
+        public void Bid(int UserInput)
+        {
+        //    UserInput = 
+        }
+
       //  static void Main(string[] args)
       //  {
           //  var client = new Client("25.133.204.102");

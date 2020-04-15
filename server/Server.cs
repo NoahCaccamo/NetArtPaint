@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using static Common.Packet;
 
 namespace server
 {
@@ -13,6 +14,7 @@ namespace server
         private UdpClient udpServer;
         private int port;
         private IPEndPoint remoteEP;
+        public int HighestBid;
 
         public Server(int port = 55555)
         {
@@ -21,16 +23,16 @@ namespace server
             remoteEP = new IPEndPoint(IPAddress.Any, port);
         }
 
-        public string receive()
-        {
-            var data = udpServer.Receive(ref remoteEP);
-            ImageConverter convertData = new ImageConverter();
-            Image image = (Image)convertData.ConvertFrom(data);
-            image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
-            //string msg = Encoding.ASCII.GetString(data);
-            //Console.WriteLine("Received: " + msg);
-            return "Done";
-        }
+        //public string receive()
+        //{
+        //    var data = udpServer.Receive(ref remoteEP);
+        //    ImageConverter convertData = new ImageConverter();
+        //    Image image = (Image)convertData.ConvertFrom(data);
+        //    image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
+        //    //string msg = Encoding.ASCII.GetString(data);
+        //    //Console.WriteLine("Received: " + msg);
+        //    return "Done";
+        //}
 
         public string jsRecieve()
         {
@@ -38,10 +40,20 @@ namespace server
             string p = Encoding.ASCII.GetString(data);
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
 
+            switch (deserializedPacket.Type)
+            {
+                case (int)pType.SubmitPainting:
+                    ImageConverter convertData = new ImageConverter();
+                    Image image = (Image)convertData.ConvertFrom(deserializedPacket.Painting);
+                    image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
+                    break;
 
-            ImageConverter convertData = new ImageConverter();
-            Image image = (Image)convertData.ConvertFrom(deserializedPacket.Painting);
-            image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
+                case (int)pType.Bid:
+                    HigherBid(deserializedPacket.bid);
+                    break;
+                    return default;
+            }
+
 
             return "Done";
         }
@@ -64,5 +76,12 @@ namespace server
                 server.send("Echo msg: " + msg);
             }
         }
+
+
+        public void HigherBid(int UserBid)
+        {
+            HighestBid = (UserBid > HighestBid) ? UserBid : HighestBid;
+        }
+
     }
 }

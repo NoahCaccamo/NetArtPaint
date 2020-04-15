@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using static Common.Packet;
 
 namespace MiniPaint
 {
@@ -150,8 +151,19 @@ namespace MiniPaint
             var ms = new MemoryStream();
             myBit.Save(ms, ImageFormat.Jpeg);
             newPacket.Painting = ms.ToArray();
+
+            newPacket.Type = (int)pType.SubmitPainting;
             client.send(newPacket);
             //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var frm = new Auction();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
         }
     }
 

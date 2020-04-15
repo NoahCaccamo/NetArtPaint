@@ -22,3 +22,4 @@ C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\MiniPaint.exe.config
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.dll
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.pdb
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.Draw.resources
+C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.Auction.resources
