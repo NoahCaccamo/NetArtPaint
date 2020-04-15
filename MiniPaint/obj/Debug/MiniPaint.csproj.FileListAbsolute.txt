@@ -32,3 +32,4 @@ C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.G
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.CoreCompileInputs.cache
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.exe
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.pdb
+C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.StartupInfo.resources

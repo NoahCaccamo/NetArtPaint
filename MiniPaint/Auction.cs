@@ -12,6 +12,7 @@ namespace MiniPaint
 {
     public partial class Auction : Form
     {
+
         PlayerInfo playerInfo = new PlayerInfo();
         public Auction()
         {
@@ -21,15 +22,11 @@ namespace MiniPaint
 
         private void PlaceBid_Click(object sender, EventArgs e)
         {
-            string userIn = BidEntry.Text;
+            string userIn = UserBid.Text;
 
         }
 
-        private void BidEntry_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Auction_Load(object sender, EventArgs e)
+        private void UserBid_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -45,6 +42,6 @@ namespace MiniPaint
                 frm.FormClosing += delegate { this.Show(); };
                 frm.Show();
             }
-        }
+    }
     }
 }
