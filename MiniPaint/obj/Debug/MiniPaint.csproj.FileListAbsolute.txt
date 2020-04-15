@@ -23,3 +23,12 @@ C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.dll
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.pdb
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.Draw.resources
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.Auction.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csprojAssemblyReference.cache
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.About.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Auction.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Draw.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Properties.Resources.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.GenerateResource.cache
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.CoreCompileInputs.cache
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.exe
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.pdb
