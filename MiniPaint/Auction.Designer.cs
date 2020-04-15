@@ -62,7 +62,7 @@
             0,
             0,
             0});
-            this.BidEntry.Location = new System.Drawing.Point(219, 256);
+            this.BidEntry.Location = new System.Drawing.Point(211, 275);
             this.BidEntry.Maximum = new decimal(new int[] {
             100000,
             0,
