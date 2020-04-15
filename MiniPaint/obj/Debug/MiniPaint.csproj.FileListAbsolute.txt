@@ -33,3 +33,12 @@ C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.C
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.exe
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.pdb
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.StartupInfo.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\MiniPaint.exe.config
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\MiniPaint.exe
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\MiniPaint.pdb
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Common.dll
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Common.pdb
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.StartupInfo.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.CopyComplete
