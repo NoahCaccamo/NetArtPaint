@@ -1,10 +1,12 @@
 ﻿using Common;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Timers;
 using static Common.Packet;
 
 namespace server
@@ -16,6 +18,10 @@ namespace server
         private IPEndPoint remoteEP;
         public int HighestBid;
         public string HighestBidder;
+
+        private static Timer sTimer;
+        private static Stopwatch stopWatch = new Stopwatch();
+        public int totalTimerTime = 60000;
 
         public Server(int port = 55555)
         {
@@ -66,8 +72,15 @@ namespace server
                     }
                     else
                     {
+                        packToSend.Type = (int)PlayerInfo.recievedType.loseBid;
                         ///MAKE IT LOSE
                     }
+                    break;
+
+                case (int)pType.RequestTime:
+                    packToSend.Type = (int)PlayerInfo.recievedType.time;
+                    packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
+
                     break;
                     return default;
             }
@@ -90,6 +103,8 @@ namespace server
 
             Packet msg = null;
 
+            SetTimer();
+            stopWatch.Start();
             while (true)
             {
                 msg = server.jsRecieve();
@@ -112,6 +127,26 @@ namespace server
                 return (int)PlayerInfo.recievedType.bidF;
             }
         }
+
+        private static void SetTimer()
+        {
+            sTimer = new System.Timers.Timer();
+
+            sTimer.Interval = 60000;
+            sTimer.Elapsed += OnTimedEvent;
+            sTimer.AutoReset = true;
+            sTimer.Enabled = true;
+        }
+
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+
+
+            stopWatch.Restart();
+            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                          e.SignalTime);
+        }
+
 
     }
 }

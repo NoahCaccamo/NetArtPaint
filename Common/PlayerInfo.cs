@@ -8,7 +8,7 @@ namespace Common
 {
     public class PlayerInfo
     {
-        public enum recievedType { bidT, bidF, winBid}
+        public enum recievedType { bidT, bidF, winBid, loseBid, time}
         public string username;
         public int money = 1000;
         public string ip;

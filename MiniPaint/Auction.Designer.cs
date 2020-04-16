@@ -32,6 +32,7 @@
             this.BuyCanvas = new System.Windows.Forms.Button();
             this.BidEntry = new System.Windows.Forms.NumericUpDown();
             this.Notifications = new System.Windows.Forms.Label();
+            this.TimerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +94,21 @@
             this.Notifications.TabIndex = 4;
             this.Notifications.Text = "label1";
             // 
+            // TimerLabel
+            // 
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.Location = new System.Drawing.Point(386, 132);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(29, 13);
+            this.TimerLabel.TabIndex = 5;
+            this.TimerLabel.Text = "timer";
+            // 
             // Auction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.Notifications);
             this.Controls.Add(this.BidEntry);
             this.Controls.Add(this.BuyCanvas);
@@ -116,5 +127,6 @@
         private System.Windows.Forms.Button BuyCanvas;
         private System.Windows.Forms.NumericUpDown BidEntry;
         private System.Windows.Forms.Label Notifications;
+        private System.Windows.Forms.Label TimerLabel;
     }
 }
