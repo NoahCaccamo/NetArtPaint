@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiniPaint
+namespace Common
 {
     public partial class StartupInfo : Form
     {
@@ -20,6 +20,11 @@ namespace MiniPaint
         private void JoinButton_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void StartupInfo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

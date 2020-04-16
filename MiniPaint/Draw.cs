@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using static Common.Packet;
 
-namespace MiniPaint
+namespace Common
 {
     public partial class Draw : Form
     {
@@ -160,11 +160,7 @@ namespace MiniPaint
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var frm = new Auction();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+
         }
 
         private void Draw_Load(object sender, EventArgs e)

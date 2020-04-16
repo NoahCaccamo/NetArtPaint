@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,33 +8,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Common;
 
-namespace MiniPaint
+namespace Common
 {
     public partial class Auction : Form
     {
 
-        Client client = new Client();
+        public static Auction mainScreen = null;
+
+
 
         public Auction()
         {
             InitializeComponent();
             Globals.playerInfo.money = 1000;
+            mainScreen = this;
         }
 
         private void PlaceBid_Click(object sender, EventArgs e)
         {
-            int userBid = Int32.Parse(BidEntry.Text);
-
-            if (Globals.playerInfo.money >= userBid)
+            int bidAmmount = Int32.Parse(BidEntry.Text);
+            if (Globals.playerInfo.money >= bidAmmount)
             {
-                Packet packetToSend = new Packet();
-                packetToSend.Username = Globals.playerInfo.username;
-                packetToSend.Type = (int)Packet.pType.Bid;
-                packetToSend.bid = userBid;
+                Packet bidPacket = new Packet();
+                bidPacket.Type = (int)Packet.pType.Bid;
+                bidPacket.Username = Globals.playerInfo.username;
+                bidPacket.bid = bidAmmount;
 
-                unpack(client.send(packetToSend));
+
+                Globals.client.send(bidPacket);
             }
 
             else
@@ -56,31 +59,12 @@ namespace MiniPaint
             }
     }
 
-        void unpack(Packet packet)
-        {
-            switch(packet.Type)
-            {
-                case ((int)PlayerInfo.recievedType.bidT):
-                    Notifications.Text = "BID ACCEPTED";
-                    break;
-
-                case ((int)PlayerInfo.recievedType.bidF):
-                    Notifications.Text = "BID not accepted";
-                    break;
-
-                case ((int)PlayerInfo.recievedType.winBid):
-
-                    break;
-
-            }
-        }
-
         private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void Auction_Load(object sender, EventArgs e)
+        public void test()
         {
 
         }

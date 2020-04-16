@@ -1,4 +1,4 @@
-﻿namespace MiniPaint
+﻿namespace Common
 {
     partial class About
     {

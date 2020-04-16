@@ -1,4 +1,4 @@
-﻿namespace MiniPaint
+﻿namespace Common
 {
     partial class StartupInfo
     {
@@ -38,7 +38,7 @@
             // 
             // JoinButton
             // 
-            this.JoinButton.Location = new System.Drawing.Point(43, 369);
+            this.JoinButton.Location = new System.Drawing.Point(41, 369);
             this.JoinButton.Name = "JoinButton";
             this.JoinButton.Size = new System.Drawing.Size(75, 23);
             this.JoinButton.TabIndex = 0;
@@ -101,6 +101,7 @@
             this.Controls.Add(this.JoinButton);
             this.Name = "StartupInfo";
             this.Text = "StartupInfo";
+            this.Load += new System.EventHandler(this.StartupInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

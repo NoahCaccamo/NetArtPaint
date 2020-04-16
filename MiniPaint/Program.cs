@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MiniPaint;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MiniPaint
+namespace Common
 {
     static class Program
     {

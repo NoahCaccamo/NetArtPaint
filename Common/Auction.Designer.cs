@@ -1,4 +1,4 @@
-﻿namespace MiniPaint
+﻿namespace Common
 {
     partial class Auction
     {
@@ -87,7 +87,7 @@
             // Notifications
             // 
             this.Notifications.AutoSize = true;
-            this.Notifications.Location = new System.Drawing.Point(181, 88);
+            this.Notifications.Location = new System.Drawing.Point(174, 98);
             this.Notifications.Name = "Notifications";
             this.Notifications.Size = new System.Drawing.Size(35, 13);
             this.Notifications.TabIndex = 4;
@@ -104,7 +104,6 @@
             this.Controls.Add(this.PlaceBid);
             this.Name = "Auction";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Auction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

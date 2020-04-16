@@ -15,6 +15,7 @@ namespace server
         private int port;
         private IPEndPoint remoteEP;
         public int HighestBid;
+        public string HighestBidder;
 
         public Server(int port = 55555)
         {
@@ -34,12 +35,15 @@ namespace server
         //    return "Done";
         //}
 
-        public string jsRecieve()
+        public Packet jsRecieve()
         {
+
             var data = udpServer.Receive(ref remoteEP);
             string p = Encoding.ASCII.GetString(data);
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
 
+            Packet packToSend = new Packet();
+            packToSend.Username = deserializedPacket.Username;
             switch (deserializedPacket.Type)
             {
                 case (int)pType.SubmitPainting:
@@ -49,18 +53,34 @@ namespace server
                     break;
 
                 case (int)pType.Bid:
-                    HigherBid(deserializedPacket.bid);
+                    packToSend.Type = HigherBid(deserializedPacket.bid, deserializedPacket.Username);
+
+                    break;
+
+                case (int)pType.EndBid:
+                    if (deserializedPacket.Username == HighestBidder)
+                    {
+                        packToSend.Type = (int)PlayerInfo.recievedType.winBid;
+                        packToSend.cost = HighestBid;
+                        //packToSend.Painting = GIVE PAINTING
+                    }
+                    else
+                    {
+                        ///MAKE IT LOSE
+                    }
                     break;
                     return default;
             }
 
 
-            return "Done";
+            return packToSend;
         }
 
-        public void send(string msg)
+        public void send(Packet msg)
         {
-            byte[] msgBytes = Encoding.ASCII.GetBytes(msg);
+            //  byte[] msgBytes = Encoding.ASCII.GetBytes(msg);
+            string json = JsonConvert.SerializeObject(msg);
+            byte[] msgBytes = Encoding.ASCII.GetBytes(json);
             udpServer.Send(msgBytes, msgBytes.Length, remoteEP);
         }
 
@@ -68,19 +88,29 @@ namespace server
         {
             var server = new Server();
 
-            string msg = null;
+            Packet msg = null;
 
-            while (msg != "exit")
+            while (true)
             {
                 msg = server.jsRecieve();
-                server.send("Echo msg: " + msg);
+                server.send(msg);
             }
         }
 
 
-        public void HigherBid(int UserBid)
+        public int HigherBid(int UserBid, string UserName)
         {
-            HighestBid = (UserBid > HighestBid) ? UserBid : HighestBid;
+            if (UserBid > HighestBid)
+            {
+                HighestBid = UserBid;
+                HighestBidder = UserName;
+                return (int)PlayerInfo.recievedType.bidT;
+            }
+            else
+            {
+                
+                return (int)PlayerInfo.recievedType.bidF;
+            }
         }
 
     }
