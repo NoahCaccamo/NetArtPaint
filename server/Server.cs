@@ -1,6 +1,7 @@
 ﻿using Common;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net;
@@ -13,11 +14,16 @@ namespace server
 {
     public class Server
     {
+        static List<Packet> pics = new List<Packet>();
+
+
         private UdpClient udpServer;
         private int port;
         private IPEndPoint remoteEP;
         public int HighestBid;
         public string HighestBidder;
+        static int AuctionPos = -1;
+        static Packet currentPic;
 
         private static Timer sTimer;
         private static Stopwatch stopWatch = new Stopwatch();
@@ -56,6 +62,7 @@ namespace server
                     ImageConverter convertData = new ImageConverter();
                     Image image = (Image)convertData.ConvertFrom(deserializedPacket.Painting);
                     image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
+                    pics.Add(deserializedPacket);
                     break;
 
                 case (int)pType.Bid:
@@ -140,13 +147,17 @@ namespace server
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-
-
+            if (AuctionPos < pics.Count)
+                AuctionPos++;
+            currentPic = pics[AuctionPos];
             stopWatch.Restart();
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
                           e.SignalTime);
         }
 
 
+
     }
+
+
 }

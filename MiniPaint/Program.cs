@@ -16,7 +16,7 @@ namespace Common
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Auction());
+            Application.Run(new StartupInfo());
         }
     }
 }

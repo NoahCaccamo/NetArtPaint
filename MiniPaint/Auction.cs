@@ -15,7 +15,7 @@ namespace MiniPaint
     public partial class Auction : Form
     {
 
-        Client client = new Client();
+        Client client = new Client(Globals.playerInfo.ip);
          private static System.Timers.Timer cTimer;
         static int auctionTimer;
 
