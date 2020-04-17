@@ -22,9 +22,7 @@ C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.dll
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\bin\Debug\Common.pdb
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\MiniPaint.Auction.resources
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csprojAssemblyReference.cache
-C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.About.resources
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Auction.resources
-C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Draw.resources
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.Properties.Resources.resources
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.GenerateResource.cache
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.CoreCompileInputs.cache
@@ -37,8 +35,10 @@ C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Common.dll
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Common.pdb
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.StartupInfo.resources
 C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\MiniPaint.csproj.CopyComplete
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\Common.About.resources
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\Common.Draw.resources
 C:\Users\ncaccamo\Downloads\MiniPaint\MiniPaint\obj\Debug\Common.StartupInfo.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\Common.About.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\Common.Draw.resources
+C:\Users\Tom\Documents\GitHub\NetArtPaint\MiniPaint\obj\Debug\Common.StartupInfo.resources
