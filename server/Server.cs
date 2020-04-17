@@ -22,12 +22,12 @@ namespace server
         private IPEndPoint remoteEP;
         public int HighestBid;
         public string HighestBidder;
-        static int AuctionPos = -1;
+        static int AuctionPos = 0;
         static Packet currentPic;
 
         private static Timer sTimer;
         private static Stopwatch stopWatch = new Stopwatch();
-        public int totalTimerTime = 60000;
+        public int totalTimerTime = 10000;
 
         public Server(int port = 55555)
         {
@@ -139,7 +139,7 @@ namespace server
         {
             sTimer = new System.Timers.Timer();
 
-            sTimer.Interval = 60000;
+            sTimer.Interval = 20000;
             sTimer.Elapsed += OnTimedEvent;
             sTimer.AutoReset = true;
             sTimer.Enabled = true;
@@ -148,8 +148,11 @@ namespace server
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             if (AuctionPos < pics.Count)
+            {
+                Console.WriteLine("BAPPATY BOOP");
                 AuctionPos++;
-            currentPic = pics[AuctionPos];
+                currentPic = pics[AuctionPos];
+            }
             stopWatch.Restart();
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
                           e.SignalTime);

@@ -18,6 +18,7 @@ namespace MiniPaint
         Client client = new Client(Globals.playerInfo.ip);
          private static System.Timers.Timer cTimer;
         static int auctionTimer;
+        bool gotPainting = false;
 
         public Auction()
         {
@@ -75,11 +76,11 @@ namespace MiniPaint
                     break;
 
                 case ((int)PlayerInfo.recievedType.winBid):
-                    
+                    gotPainting = true;
                     break;
 
                 case ((int)PlayerInfo.recievedType.loseBid):
-
+                    SetText(packet.Username + "Won the bid");
                     break;
 
                 case ((int)PlayerInfo.recievedType.time):
@@ -104,7 +105,14 @@ namespace MiniPaint
         private void FetchServerTime(Object source, System.Timers.ElapsedEventArgs e)
         {
             Packet packToSend = new Packet();
-            packToSend.Type = (int)Packet.pType.RequestTime;
+            if (auctionTimer > 0 || gotPainting)
+            {
+                gotPainting = false;
+                packToSend.Type = (int)Packet.pType.RequestTime;
+            }else
+            {
+                packToSend.Type = (int)Packet.pType.EndBid;
+            }
             packToSend.Username = Globals.playerInfo.username;
 
             unpack(client.send(packToSend));
