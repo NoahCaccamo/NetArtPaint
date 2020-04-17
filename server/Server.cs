@@ -27,7 +27,7 @@ namespace server
 
         private static Timer sTimer;
         private static Stopwatch stopWatch = new Stopwatch();
-        public int totalTimerTime = 10000;
+        public int totalTimerTime = 70000;
 
         public Server(int port = 55555)
         {
@@ -78,6 +78,7 @@ namespace server
                         packToSend.Painting = pics[AuctionPos].Painting;
                         packToSend.Title = pics[AuctionPos].Title;
                         packToSend.Description = pics[AuctionPos].Description;
+                        packToSend.Username = pics[AuctionPos].Username;
                         //packToSend.Painting = GIVE PAINTING
                     }
                     else
@@ -143,7 +144,7 @@ namespace server
         {
             sTimer = new System.Timers.Timer();
 
-            sTimer.Interval = 20000;
+            sTimer.Interval = 60000;
             sTimer.Elapsed += OnTimedEvent;
             sTimer.AutoReset = true;
             sTimer.Enabled = true;

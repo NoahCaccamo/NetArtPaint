@@ -142,7 +142,7 @@ namespace Common
         }
 
         private void Save_Click(object sender, EventArgs e)
-        {
+        {   
             Graphics grap = Graphics.FromImage(myBit);
             Rectangle rect = pnl_Draw.RectangleToScreen(pnl_Draw.ClientRectangle);
             grap.CopyFromScreen(rect.Location, Point.Empty, pnl_Draw.Size);
@@ -153,6 +153,9 @@ namespace Common
             newPacket.Painting = ms.ToArray();
 
             newPacket.Type = (int)pType.SubmitPainting;
+            newPacket.Title = TitleBox.Text;
+            newPacket.Description = DescriptionBox.Text;
+            newPacket.Username = Globals.playerInfo.username;
             client.send(newPacket);
             //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
             this.Close();

@@ -77,6 +77,12 @@ namespace MiniPaint
 
                 case ((int)PlayerInfo.recievedType.winBid):
                     gotPainting = true;
+                    Globals.playerInfo.money -= packet.cost;
+
+                    ImageConverter convertData = new ImageConverter();
+                    Image image = (Image)convertData.ConvertFrom(packet.Painting);
+                    image.Save("C:\\Users\\Tom\\Documents\\WINNER.bmp");
+                    ///SAVE THE PAINTING
                     break;
 
                 case ((int)PlayerInfo.recievedType.loseBid):
