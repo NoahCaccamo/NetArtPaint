@@ -75,11 +75,15 @@ namespace server
                     {
                         packToSend.Type = (int)PlayerInfo.recievedType.winBid;
                         packToSend.cost = HighestBid;
+                        packToSend.Painting = pics[AuctionPos].Painting;
+                        packToSend.Title = pics[AuctionPos].Title;
+                        packToSend.Description = pics[AuctionPos].Description;
                         //packToSend.Painting = GIVE PAINTING
                     }
                     else
                     {
                         packToSend.Type = (int)PlayerInfo.recievedType.loseBid;
+                        packToSend.Username = HighestBidder;
                         ///MAKE IT LOSE
                     }
                     break;
