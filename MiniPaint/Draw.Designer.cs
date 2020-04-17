@@ -58,7 +58,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMiniPaintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Draw = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.TitleBox = new System.Windows.Forms.TextBox();
             this.DescriptionBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -90,7 +89,7 @@
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(75, 23);
             this.Save.TabIndex = 3;
-            this.Save.Text = "Save";
+            this.Save.Text = "Submit";
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
@@ -388,17 +387,6 @@
             this.pnl_Draw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_Draw_MouseMove);
             this.pnl_Draw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_Draw_MouseUp);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(517, 56);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(59, 13);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "To Auction";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // TitleBox
             // 
             this.TitleBox.Location = new System.Drawing.Point(332, 294);
@@ -417,7 +405,7 @@
             this.DescriptionBox.Name = "DescriptionBox";
             this.DescriptionBox.Size = new System.Drawing.Size(150, 119);
             this.DescriptionBox.TabIndex = 5;
-            this.DescriptionBox.Text = "\r\n\r\n\r\nDescription";
+            this.DescriptionBox.Text = "Artist Statement";
             this.DescriptionBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Draw
@@ -427,14 +415,13 @@
             this.ClientSize = new System.Drawing.Size(744, 451);
             this.Controls.Add(this.DescriptionBox);
             this.Controls.Add(this.TitleBox);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pnl_Draw);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MaximizeBox = false;
             this.Name = "Draw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mini Paint by Anoop Sharma";
+            this.Text = "Canvas";
             this.Load += new System.EventHandler(this.Draw_Load);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -487,7 +474,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMiniPaintToolStripMenuItem;
         private System.Windows.Forms.Button Save;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TextBox TitleBox;
         private System.Windows.Forms.TextBox DescriptionBox;
     }

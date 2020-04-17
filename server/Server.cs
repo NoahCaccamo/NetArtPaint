@@ -1,4 +1,4 @@
-﻿using Common;
+using Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace server
 
         private static Timer sTimer;
         private static Stopwatch stopWatch = new Stopwatch();
-        public int totalTimerTime = 10000;
+        public int totalTimerTime = 60000;
 
         public Server(int port = 55555)
         {
@@ -70,13 +70,16 @@ namespace server
                         sTimer.Start();
                         stopWatch.Restart();
                         AuctionPos++;
+                        currentPic = pics.ElementAt(AuctionPos);
                     }
                     Console.WriteLine("PICSIZE   " + pics.Count);
                     break;
 
                 case (int)pType.Bid:
-                    packToSend.Type = HigherBid(deserializedPacket.bid, deserializedPacket.Username);
-
+                    if (totalTimerTime - (int)stopWatch.ElapsedMilliseconds > 0)
+                    {
+                        packToSend.Type = HigherBid(deserializedPacket.bid, deserializedPacket.Username);
+                    }
                     break;
 
                 case (int)pType.EndBid:
@@ -108,6 +111,13 @@ namespace server
                 case (int)pType.RequestTime:
                     packToSend.Type = (int)PlayerInfo.recievedType.time;
                     packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
+                    if (sTimer.Enabled == true && pics.Count >= 1)
+                    {
+                        packToSend.Title = currentPic.Title;
+                        packToSend.Description = currentPic.Description;
+                        packToSend.Username = LastHighestBidder;
+                        packToSend.bid = HighestBid;
+                    }
 
                     break;
                     return default;
@@ -160,7 +170,7 @@ namespace server
         {
             sTimer = new System.Timers.Timer();
 
-            sTimer.Interval = 20000;
+            sTimer.Interval = 70000;
             sTimer.Elapsed += OnTimedEvent;
             sTimer.AutoReset = false;
             sTimer.Enabled = false;

@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using System.Threading;
 
 namespace MiniPaint
 {
@@ -23,7 +25,7 @@ namespace MiniPaint
         public Auction()
         {
             InitializeComponent();
-            Globals.playerInfo.money = 100000;
+            Globals.playerInfo.money = 5000;
             startTimer();
         }
 
@@ -58,6 +60,7 @@ namespace MiniPaint
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Show(); };
                 frm.Show();
+                SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
             }
     }
 
@@ -67,26 +70,69 @@ namespace MiniPaint
             {
                 case ((int)PlayerInfo.recievedType.bidT):
                     //Notifications.Text = "BID ACCEPTED";
-                    SetText("BID ACCEPTED");
+                    SetText(Notifications, "BID ACCEPTED");
                     break;
 
                 case ((int)PlayerInfo.recievedType.bidF):
                     //Notifications.Text = "BID not accepted";
-                    SetText("BID NOT ACCEPTED");
+                    SetText(Notifications, "BID NOT ACCEPTED");
                     break;
 
                 case ((int)PlayerInfo.recievedType.winBid):
                     gotPainting = true;
                     Globals.playerInfo.money -= packet.cost;
+                    SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
 
                     ImageConverter convertData = new ImageConverter();
                     Image image = (Image)convertData.ConvertFrom(packet.Painting);
-                    image.Save("C:\\Users\\ncaccamo\\Music\\WINNER" + packet.bid +".bmp");
+
+                    Thread th = new Thread((ThreadStart)(() => {
+                        SaveFileDialog dialog = new SaveFileDialog();
+                    dialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+                    dialog.Title = "Save an Image File";
+                    dialog.ShowDialog();
+
+                    // If the file name is not an empty string open it for saving.
+                    if (dialog.FileName != "")
+                    {
+                        // Saves the Image via a FileStream created by the OpenFile method.
+                        System.IO.FileStream fs =
+                            (System.IO.FileStream)dialog.OpenFile();
+                        // Saves the Image in the appropriate ImageFormat based upon the
+                        // File type selected in the dialog box.
+                        // NOTE that the FilterIndex property is one-based.
+                        switch (dialog.FilterIndex)
+                        {
+                            case 1:
+                                image.Save(fs,
+                                  System.Drawing.Imaging.ImageFormat.Jpeg);
+                                break;
+
+                            case 2:
+                                image.Save(fs,
+                                  System.Drawing.Imaging.ImageFormat.Bmp);
+                                break;
+
+                            case 3:
+                                image.Save(fs,
+                                  System.Drawing.Imaging.ImageFormat.Gif);
+                                break;
+                        }
+
+                        fs.Close();
+                    }
+            }));
+
+                    th.SetApartmentState(ApartmentState.STA);
+                    th.Start();
+                    th.Join();
+
+                    // image.Save("C:\\Users\\ncaccamo\\Music\\WINNER" + packet.bid +".bmp");
                     ///SAVE THE PAINTING
                     break;
 
                 case ((int)PlayerInfo.recievedType.loseBid):
-                    SetText(packet.Username + "Won the bid");
+                    SetText(Notifications, packet.Username + "Won the bid");
                     break;
 
                 case ((int)PlayerInfo.recievedType.time):
@@ -94,7 +140,10 @@ namespace MiniPaint
                     Debug.WriteLine(auctionTimer);
                     TimeSpan t = TimeSpan.FromMilliseconds(auctionTimer);
                     //TimerLabel.Text = min + ":" + secs;
-                    SetText("Minutes left: " + t.Minutes + " Seconds left: " + t.Seconds);
+                    SetText(TimerLabel, "Minutes left: " + t.Minutes + " Seconds left: " + t.Seconds);
+                    SetText(TitleLabel, packet.Title);
+                    SetText(DescriptionLabel, packet.Description);
+                    SetText(CurrentHighLabel, packet.Username + " in the lead with a bid of " + packet.bid);
                     break;
             }
         }
@@ -126,17 +175,17 @@ namespace MiniPaint
         }
 
 
-        delegate void SetTextCallback(string text);
+        delegate void SetTextCallback(Label label, string text);
 
-        private void SetText(string text)
+        private void SetText(Label label, string text)
         {
-            if (this.Notifications.InvokeRequired)
+            if (label.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
+                this.Invoke(d, new object[] { label, text });
             } else
             {
-                this.Notifications.Text = text;
+                label.Text = text;
             }
         }
 
@@ -156,6 +205,11 @@ namespace MiniPaint
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MoneyLabel_Click(object sender, EventArgs e)
         {
 
         }

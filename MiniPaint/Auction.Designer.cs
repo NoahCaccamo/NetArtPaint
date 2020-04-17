@@ -36,6 +36,7 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.MoneyLabel = new System.Windows.Forms.Label();
+            this.CurrentHighLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,7 +107,7 @@
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TimerLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.TimerLabel.Location = new System.Drawing.Point(151, 16);
+            this.TimerLabel.Location = new System.Drawing.Point(21, 161);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(67, 29);
             this.TimerLabel.TabIndex = 5;
@@ -138,17 +139,28 @@
             // 
             this.MoneyLabel.AutoSize = true;
             this.MoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoneyLabel.Location = new System.Drawing.Point(278, 20);
+            this.MoneyLabel.Location = new System.Drawing.Point(220, 21);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(73, 24);
             this.MoneyLabel.TabIndex = 8;
             this.MoneyLabel.Text = "Money";
+            this.MoneyLabel.Click += new System.EventHandler(this.MoneyLabel_Click);
+            // 
+            // CurrentHighLabel
+            // 
+            this.CurrentHighLabel.AutoSize = true;
+            this.CurrentHighLabel.Location = new System.Drawing.Point(13, 199);
+            this.CurrentHighLabel.Name = "CurrentHighLabel";
+            this.CurrentHighLabel.Size = new System.Drawing.Size(63, 13);
+            this.CurrentHighLabel.TabIndex = 9;
+            this.CurrentHighLabel.Text = "CurrentHigh";
             // 
             // Auction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 370);
+            this.ClientSize = new System.Drawing.Size(455, 370);
+            this.Controls.Add(this.CurrentHighLabel);
             this.Controls.Add(this.MoneyLabel);
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.TitleLabel);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label MoneyLabel;
+        private System.Windows.Forms.Label CurrentHighLabel;
     }
 }
