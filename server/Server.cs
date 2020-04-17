@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Timers;
 using static Common.Packet;
+using System.Linq;
 
 namespace server
 {
@@ -22,7 +23,7 @@ namespace server
         private IPEndPoint remoteEP;
         public int HighestBid;
         public string HighestBidder;
-        static int AuctionPos = 0;
+        static int AuctionPos = -1;
         static Packet currentPic;
 
         private static Timer sTimer;
@@ -63,6 +64,7 @@ namespace server
                     Image image = (Image)convertData.ConvertFrom(deserializedPacket.Painting);
                     image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
                     pics.Add(deserializedPacket);
+                    Console.WriteLine("PICSIZE   " + pics.Count);
                     break;
 
                 case (int)pType.Bid:
@@ -75,10 +77,10 @@ namespace server
                     {
                         packToSend.Type = (int)PlayerInfo.recievedType.winBid;
                         packToSend.cost = HighestBid;
-                        packToSend.Painting = pics[AuctionPos].Painting;
-                        packToSend.Title = pics[AuctionPos].Title;
-                        packToSend.Description = pics[AuctionPos].Description;
-                        packToSend.Username = pics[AuctionPos].Username;
+                        packToSend.Painting = currentPic.Painting;
+                        packToSend.Title = currentPic.Title;
+                        packToSend.Description = currentPic.Description;
+                        packToSend.Username = currentPic.Username;
                         //packToSend.Painting = GIVE PAINTING
                     }
                     else
@@ -156,7 +158,7 @@ namespace server
             {
                 Console.WriteLine("BAPPATY BOOP");
                 AuctionPos++;
-                currentPic = pics[AuctionPos];
+                currentPic = pics.ElementAt(AuctionPos);
             }
             stopWatch.Restart();
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",

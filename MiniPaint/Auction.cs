@@ -17,7 +17,7 @@ namespace MiniPaint
 
         Client client = new Client(Globals.playerInfo.ip);
          private static System.Timers.Timer cTimer;
-        static int auctionTimer;
+        static int auctionTimer = 999;
         bool gotPainting = false;
 
         public Auction()
@@ -81,7 +81,7 @@ namespace MiniPaint
 
                     ImageConverter convertData = new ImageConverter();
                     Image image = (Image)convertData.ConvertFrom(packet.Painting);
-                    image.Save("C:\\Users\\Tom\\Documents\\WINNER.bmp");
+                    image.Save("C:\\Users\\Tom\\Documents\\TestPhoto\\WINNER" + packet.bid +".bmp");
                     ///SAVE THE PAINTING
                     break;
 

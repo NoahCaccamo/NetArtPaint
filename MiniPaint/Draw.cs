@@ -158,7 +158,7 @@ namespace Common
             newPacket.Username = Globals.playerInfo.username;
             client.send(newPacket);
             //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
-            this.Close();
+            this.Hide();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
