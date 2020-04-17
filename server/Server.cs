@@ -24,11 +24,11 @@ namespace server
         public int HighestBid;
         public string HighestBidder;
         static int AuctionPos = -1;
-        static Packet currentPic;
+        Packet currentPic;
 
         private static Timer sTimer;
         private static Stopwatch stopWatch = new Stopwatch();
-        public int totalTimerTime = 70000;
+        public int totalTimerTime = 10000;
 
         public Server(int port = 55555)
         {
@@ -75,6 +75,8 @@ namespace server
                 case (int)pType.EndBid:
                     if (deserializedPacket.Username == HighestBidder)
                     {
+                        currentPic = pics.ElementAt(AuctionPos);
+
                         packToSend.Type = (int)PlayerInfo.recievedType.winBid;
                         packToSend.cost = HighestBid;
                         packToSend.Painting = currentPic.Painting;
@@ -146,7 +148,7 @@ namespace server
         {
             sTimer = new System.Timers.Timer();
 
-            sTimer.Interval = 60000;
+            sTimer.Interval = 20000;
             sTimer.Elapsed += OnTimedEvent;
             sTimer.AutoReset = true;
             sTimer.Enabled = true;
@@ -158,7 +160,6 @@ namespace server
             {
                 Console.WriteLine("BAPPATY BOOP");
                 AuctionPos++;
-                currentPic = pics.ElementAt(AuctionPos);
             }
             stopWatch.Restart();
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",

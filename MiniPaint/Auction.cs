@@ -23,7 +23,7 @@ namespace MiniPaint
         public Auction()
         {
             InitializeComponent();
-            Globals.playerInfo.money = 1000;
+            Globals.playerInfo.money = 100000;
             startTimer();
         }
 
@@ -81,7 +81,7 @@ namespace MiniPaint
 
                     ImageConverter convertData = new ImageConverter();
                     Image image = (Image)convertData.ConvertFrom(packet.Painting);
-                    image.Save("C:\\Users\\Tom\\Documents\\TestPhoto\\WINNER" + packet.bid +".bmp");
+                    image.Save("C:\\Users\\ncaccamo\\Music\\WINNER" + packet.bid +".bmp");
                     ///SAVE THE PAINTING
                     break;
 
