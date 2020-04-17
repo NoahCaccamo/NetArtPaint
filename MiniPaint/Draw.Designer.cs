@@ -59,6 +59,8 @@
             this.aboutMiniPaintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Draw = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.TitleBox = new System.Windows.Forms.TextBox();
+            this.DescriptionBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -292,7 +294,6 @@
             // 
             // button2
             // 
-            this.button2.Image = global::Common.Properties.Resources.pencil;
             this.button2.Location = new System.Drawing.Point(4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 28);
@@ -398,11 +399,34 @@
             this.linkLabel1.Text = "To Auction";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // TitleBox
+            // 
+            this.TitleBox.Location = new System.Drawing.Point(332, 294);
+            this.TitleBox.Name = "TitleBox";
+            this.TitleBox.Size = new System.Drawing.Size(150, 20);
+            this.TitleBox.TabIndex = 4;
+            this.TitleBox.Text = "Title";
+            this.TitleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DescriptionBox
+            // 
+            this.DescriptionBox.AcceptsReturn = true;
+            this.DescriptionBox.AcceptsTab = true;
+            this.DescriptionBox.Location = new System.Drawing.Point(332, 320);
+            this.DescriptionBox.Multiline = true;
+            this.DescriptionBox.Name = "DescriptionBox";
+            this.DescriptionBox.Size = new System.Drawing.Size(150, 119);
+            this.DescriptionBox.TabIndex = 5;
+            this.DescriptionBox.Text = "\r\n\r\n\r\nDescription";
+            this.DescriptionBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 451);
+            this.Controls.Add(this.DescriptionBox);
+            this.Controls.Add(this.TitleBox);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pnl_Draw);
             this.Controls.Add(this.panel1);
@@ -464,6 +488,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMiniPaintToolStripMenuItem;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.TextBox TitleBox;
+        private System.Windows.Forms.TextBox DescriptionBox;
     }
 }
 
