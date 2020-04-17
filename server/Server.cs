@@ -23,6 +23,7 @@ namespace server
         private IPEndPoint remoteEP;
         public int HighestBid;
         public string HighestBidder;
+        public string LastHighestBidder;
         static int AuctionPos = -1;
         Packet currentPic;
 
@@ -64,6 +65,12 @@ namespace server
                     Image image = (Image)convertData.ConvertFrom(deserializedPacket.Painting);
                     image.Save("C:\\Users\\ncaccamo\\Music\\myBitmap.bmp");
                     pics.Add(deserializedPacket);
+                    if (sTimer.Enabled == false)
+                    {
+                        sTimer.Start();
+                        stopWatch.Restart();
+                        AuctionPos++;
+                    }
                     Console.WriteLine("PICSIZE   " + pics.Count);
                     break;
 
@@ -75,20 +82,25 @@ namespace server
                 case (int)pType.EndBid:
                     if (deserializedPacket.Username == HighestBidder)
                     {
-                        currentPic = pics.ElementAt(AuctionPos);
+                        if (pics.Count >= 1)
+                        {
+                            currentPic = pics.ElementAt(AuctionPos);
 
-                        packToSend.Type = (int)PlayerInfo.recievedType.winBid;
-                        packToSend.cost = HighestBid;
-                        packToSend.Painting = currentPic.Painting;
-                        packToSend.Title = currentPic.Title;
-                        packToSend.Description = currentPic.Description;
-                        packToSend.Username = currentPic.Username;
-                        //packToSend.Painting = GIVE PAINTING
+                            packToSend.Type = (int)PlayerInfo.recievedType.winBid;
+                            packToSend.cost = HighestBid;
+                            packToSend.Painting = currentPic.Painting;
+                            packToSend.Title = currentPic.Title;
+                            packToSend.Description = currentPic.Description;
+                            packToSend.Username = currentPic.Username;
+                            //packToSend.Painting = GIVE PAINTING
+                            HighestBidder = "";
+                            HighestBid = 0;
+                        }
                     }
                     else
                     {
                         packToSend.Type = (int)PlayerInfo.recievedType.loseBid;
-                        packToSend.Username = HighestBidder;
+                        packToSend.Username = LastHighestBidder;
                         ///MAKE IT LOSE
                     }
                     break;
@@ -120,7 +132,6 @@ namespace server
             Packet msg = null;
 
             SetTimer();
-            stopWatch.Start();
             while (true)
             {
                 msg = server.jsRecieve();
@@ -135,6 +146,7 @@ namespace server
             {
                 HighestBid = UserBid;
                 HighestBidder = UserName;
+                LastHighestBidder = HighestBidder;
                 return (int)PlayerInfo.recievedType.bidT;
             }
             else
@@ -150,18 +162,21 @@ namespace server
 
             sTimer.Interval = 20000;
             sTimer.Elapsed += OnTimedEvent;
-            sTimer.AutoReset = true;
-            sTimer.Enabled = true;
+            sTimer.AutoReset = false;
+            sTimer.Enabled = false;
         }
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            if (AuctionPos < pics.Count)
+            stopWatch.Stop();
+            sTimer.Stop();
+            if (AuctionPos < pics.Count - 1)
             {
                 Console.WriteLine("BAPPATY BOOP");
                 AuctionPos++;
+                sTimer.Start();
+                stopWatch.Restart();
             }
-            stopWatch.Restart();
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
                           e.SignalTime);
         }
