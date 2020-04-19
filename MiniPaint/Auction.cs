@@ -16,6 +16,8 @@ namespace MiniPaint
 {
     public partial class Auction : Form
     {
+        List<Packet> invPics = new List<Packet>();
+
 
         Client client = new Client(Globals.playerInfo.ip);
          private static System.Timers.Timer cTimer;
@@ -86,47 +88,13 @@ namespace MiniPaint
                     ImageConverter convertData = new ImageConverter();
                     Image image = (Image)convertData.ConvertFrom(packet.Painting);
 
-                    Thread th = new Thread((ThreadStart)(() => {
-                        SaveFileDialog dialog = new SaveFileDialog();
-                    dialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
-                    dialog.Title = "Save an Image File";
-                    dialog.ShowDialog();
+                    invPics.Add(packet);
+                    UpdateInvList();
 
-                    // If the file name is not an empty string open it for saving.
-                    if (dialog.FileName != "")
-                    {
-                        // Saves the Image via a FileStream created by the OpenFile method.
-                        System.IO.FileStream fs =
-                            (System.IO.FileStream)dialog.OpenFile();
-                        // Saves the Image in the appropriate ImageFormat based upon the
-                        // File type selected in the dialog box.
-                        // NOTE that the FilterIndex property is one-based.
-                        switch (dialog.FilterIndex)
-                        {
-                            case 1:
-                                image.Save(fs,
-                                  System.Drawing.Imaging.ImageFormat.Jpeg);
-                                break;
+                    //InventoryListView.LargeImageList = imageList;
 
-                            case 2:
-                                image.Save(fs,
-                                  System.Drawing.Imaging.ImageFormat.Bmp);
-                                break;
-
-                            case 3:
-                                image.Save(fs,
-                                  System.Drawing.Imaging.ImageFormat.Gif);
-                                break;
-                        }
-
-                        fs.Close();
-                    }
-            }));
-
-                    th.SetApartmentState(ApartmentState.STA);
-                    th.Start();
-                    th.Join();
-
+                    
+                    
                     // image.Save("C:\\Users\\ncaccamo\\Music\\WINNER" + packet.bid +".bmp");
                     ///SAVE THE PAINTING
                     break;
@@ -189,6 +157,58 @@ namespace MiniPaint
             }
         }
 
+        delegate void SetImageListCallback(ListView invList, ImageList imageList, Packet packet, string key, Image image);
+        private void SetImageList(ListView invList, ImageList imageList, Packet packet, string key, Image image)
+        {
+            if (invList.InvokeRequired)
+            {
+                SetImageListCallback d = new SetImageListCallback(SetImageList);
+                this.Invoke(d, new object[] { invList, imageList, packet, key, image});
+            }
+            else
+            {
+                imageList.Images.Add(key, image);
+
+                invList.LargeImageList = imageList;
+                var listViewItem = invList.Items.Add(packet.Title);
+                listViewItem.ImageKey = key;
+            }
+        }
+
+
+        delegate void ClearInvListCallback(ListView invList);
+
+        private void ClearInvList(ListView invList)
+        {
+            if (invList.InvokeRequired)
+            {
+                ClearInvListCallback d = new ClearInvListCallback(ClearInvList);
+                this.Invoke(d, new object[] { invList });
+            }
+            else
+            {
+                invList.Clear();
+            }
+        }
+
+
+        void UpdateInvList()
+        {
+            ClearInvList(InventoryListView);
+            var imageList = new ImageList();
+
+            for (int i = 0; i < invPics.Count; i++)
+            {
+                imageList.ImageSize = new Size(128, 128);
+                ImageConverter convertData = new ImageConverter();
+                Image image = (Image)convertData.ConvertFrom(invPics[i].Painting);
+                string iKey = invPics[i].Title + i;
+
+                
+                SetImageList(InventoryListView, imageList, invPics[i], iKey, image);
+            }
+        }
+
         private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
             
@@ -196,7 +216,7 @@ namespace MiniPaint
 
         private void Auction_Load(object sender, EventArgs e)
         {
-
+            //InventoryListView.View = View.LargeIcon;
         }
 
         private void Notifications_Click(object sender, EventArgs e)
@@ -212,6 +232,27 @@ namespace MiniPaint
         private void MoneyLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void InventoryListView_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void InventoryListView_DoubleClick(object sender, EventArgs e)
+        {
+            int i = InventoryListView.FocusedItem.Index;
+
+            Packet thisPainting = invPics[i];
+
+            ImageConverter convertData = new ImageConverter();
+            Image image = (Image)convertData.ConvertFrom(thisPainting.Painting);
+
+            var frm = new InvDisplay(image, thisPainting.Title, thisPainting.Username, thisPainting.Description);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
         }
     }
 }

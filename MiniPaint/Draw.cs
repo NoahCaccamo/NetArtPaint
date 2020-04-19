@@ -19,7 +19,7 @@ namespace Common
         bool startPaint = false;
         Graphics g;
         Bitmap myBit;
-        Client client = new Client();
+        Client client = new Client(Globals.playerInfo.ip);
         //nullable int for storing Null value
         int? initX = null;
         int? initY = null;

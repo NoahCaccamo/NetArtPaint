@@ -37,6 +37,7 @@
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.MoneyLabel = new System.Windows.Forms.Label();
             this.CurrentHighLabel = new System.Windows.Forms.Label();
+            this.InventoryListView = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,11 +156,23 @@
             this.CurrentHighLabel.TabIndex = 9;
             this.CurrentHighLabel.Text = "CurrentHigh";
             // 
+            // InventoryListView
+            // 
+            this.InventoryListView.HideSelection = false;
+            this.InventoryListView.Location = new System.Drawing.Point(419, 147);
+            this.InventoryListView.MultiSelect = false;
+            this.InventoryListView.Name = "InventoryListView";
+            this.InventoryListView.Size = new System.Drawing.Size(346, 272);
+            this.InventoryListView.TabIndex = 10;
+            this.InventoryListView.UseCompatibleStateImageBehavior = false;
+            this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
+            // 
             // Auction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 370);
+            this.ClientSize = new System.Drawing.Size(832, 496);
+            this.Controls.Add(this.InventoryListView);
             this.Controls.Add(this.CurrentHighLabel);
             this.Controls.Add(this.MoneyLabel);
             this.Controls.Add(this.DescriptionLabel);
@@ -188,5 +201,6 @@
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label MoneyLabel;
         private System.Windows.Forms.Label CurrentHighLabel;
+        private System.Windows.Forms.ListView InventoryListView;
     }
 }

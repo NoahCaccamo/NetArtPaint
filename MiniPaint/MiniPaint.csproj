@@ -67,6 +67,12 @@
     <Compile Include="Draw.Designer.cs">
       <DependentUpon>Draw.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvDisplay.Designer.cs">
+      <DependentUpon>InvDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartupInfo.cs">
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Draw.resx">
       <DependentUpon>Draw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvDisplay.resx">
+      <DependentUpon>InvDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

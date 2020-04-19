@@ -141,6 +141,9 @@ namespace server
 
             Packet msg = null;
 
+            string externalip = new WebClient().DownloadString("http://icanhazip.com");
+            Console.WriteLine("Server is running on: " + externalip);
+
             SetTimer();
             while (true)
             {
