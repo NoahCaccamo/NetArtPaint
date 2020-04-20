@@ -106,6 +106,7 @@
             this.MaximizeBox = false;
             this.Name = "InvDisplay";
             this.Text = "InvDisplay";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InvDisplay_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.PaintingBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

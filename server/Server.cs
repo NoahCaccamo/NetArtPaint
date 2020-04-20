@@ -97,13 +97,16 @@ namespace server
                             packToSend.Username = currentPic.Username;
                             //packToSend.Painting = GIVE PAINTING
                             HighestBidder = "";
+                            LastHighestBidder = "";
                             HighestBid = 0;
                         }
+                        packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
                     }
                     else
                     {
                         packToSend.Type = (int)PlayerInfo.recievedType.loseBid;
                         packToSend.Username = LastHighestBidder;
+                        packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
                         ///MAKE IT LOSE
                     }
                     break;
@@ -113,6 +116,7 @@ namespace server
                     packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
                     if (sTimer.Enabled == true && pics.Count >= 1)
                     {
+                        currentPic = pics.ElementAt(AuctionPos);
                         packToSend.Title = currentPic.Title;
                         packToSend.Description = currentPic.Description;
                         packToSend.Username = LastHighestBidder;

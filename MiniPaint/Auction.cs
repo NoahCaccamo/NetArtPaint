@@ -20,9 +20,11 @@ namespace MiniPaint
 
 
         Client client = new Client(Globals.playerInfo.ip);
-         private static System.Timers.Timer cTimer;
+        private static System.Timers.Timer cTimer;
         static int auctionTimer = 999;
         bool gotPainting = false;
+
+        InvDisplay displayWindow = null;
 
         public Auction()
         {
@@ -35,7 +37,7 @@ namespace MiniPaint
         {
             int userBid = Int32.Parse(BidEntry.Text);
 
-            if (Globals.playerInfo.money >= userBid)
+            if (Globals.playerInfo.money >= userBid && auctionTimer > 0)
             {
                 Packet packetToSend = new Packet();
                 packetToSend.Username = Globals.playerInfo.username;
@@ -64,11 +66,11 @@ namespace MiniPaint
                 frm.Show();
                 SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
             }
-    }
+        }
 
         void unpack(Packet packet)
         {
-            switch(packet.Type)
+            switch (packet.Type)
             {
                 case ((int)PlayerInfo.recievedType.bidT):
                     //Notifications.Text = "BID ACCEPTED";
@@ -81,39 +83,52 @@ namespace MiniPaint
                     break;
 
                 case ((int)PlayerInfo.recievedType.winBid):
-                    gotPainting = true;
-                    Globals.playerInfo.money -= packet.cost;
-                    SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
+                    UpdateTimer(packet);
+                    if (!gotPainting)
+                    {
+                        gotPainting = true;
+                        Globals.playerInfo.money -= packet.cost;
+                        SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
 
-                    ImageConverter convertData = new ImageConverter();
-                    Image image = (Image)convertData.ConvertFrom(packet.Painting);
+                        ImageConverter convertData = new ImageConverter();
+                        Image image = (Image)convertData.ConvertFrom(packet.Painting);
 
-                    invPics.Add(packet);
-                    UpdateInvList();
-
+                        invPics.Add(packet);
+                        UpdateInvList();
+                    }
                     //InventoryListView.LargeImageList = imageList;
 
-                    
-                    
+
+
                     // image.Save("C:\\Users\\ncaccamo\\Music\\WINNER" + packet.bid +".bmp");
                     ///SAVE THE PAINTING
                     break;
 
                 case ((int)PlayerInfo.recievedType.loseBid):
                     SetText(Notifications, packet.Username + "Won the bid");
+                    UpdateTimer(packet);
                     break;
 
                 case ((int)PlayerInfo.recievedType.time):
-                    auctionTimer = packet.time;
-                    Debug.WriteLine(auctionTimer);
-                    TimeSpan t = TimeSpan.FromMilliseconds(auctionTimer);
-                    //TimerLabel.Text = min + ":" + secs;
-                    SetText(TimerLabel, "Minutes left: " + t.Minutes + " Seconds left: " + t.Seconds);
+                    UpdateTimer(packet);
                     SetText(TitleLabel, packet.Title);
                     SetText(DescriptionLabel, packet.Description);
                     SetText(CurrentHighLabel, packet.Username + " in the lead with a bid of " + packet.bid);
                     break;
             }
+        }
+
+
+        void UpdateTimer(Packet packet)
+        {
+            auctionTimer = packet.time;
+            Debug.WriteLine(auctionTimer);
+            TimeSpan t = TimeSpan.FromMilliseconds(auctionTimer);
+            //TimerLabel.Text = min + ":" + secs;
+
+            int secs = (t.Seconds >= 0) ? t.Seconds : 0;
+
+            SetText(TimerLabel, "Minutes left: " + t.Minutes + " Seconds left: " + secs);
         }
 
         void startTimer()
@@ -128,11 +143,11 @@ namespace MiniPaint
         private void FetchServerTime(Object source, System.Timers.ElapsedEventArgs e)
         {
             Packet packToSend = new Packet();
-            if (auctionTimer > 0 || gotPainting)
+            if (auctionTimer > 0)
             {
                 gotPainting = false;
                 packToSend.Type = (int)Packet.pType.RequestTime;
-            }else
+            } else
             {
                 packToSend.Type = (int)Packet.pType.EndBid;
             }
@@ -163,7 +178,7 @@ namespace MiniPaint
             if (invList.InvokeRequired)
             {
                 SetImageListCallback d = new SetImageListCallback(SetImageList);
-                this.Invoke(d, new object[] { invList, imageList, packet, key, image});
+                this.Invoke(d, new object[] { invList, imageList, packet, key, image });
             }
             else
             {
@@ -204,20 +219,28 @@ namespace MiniPaint
                 Image image = (Image)convertData.ConvertFrom(invPics[i].Painting);
                 string iKey = invPics[i].Title + i;
 
-                
+
                 SetImageList(InventoryListView, imageList, invPics[i], iKey, image);
             }
         }
 
         private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Auction_Load(object sender, EventArgs e)
         {
             //InventoryListView.View = View.LargeIcon;
         }
+
+
+        /*
+        private void Auction_FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Exit();
+        }
+        */
 
         private void Notifications_Click(object sender, EventArgs e)
         {
@@ -241,18 +264,23 @@ namespace MiniPaint
 
         private void InventoryListView_DoubleClick(object sender, EventArgs e)
         {
-            int i = InventoryListView.FocusedItem.Index;
+            if (Globals.canOpenDisplay)
+            {
+                int i = InventoryListView.FocusedItem.Index;
 
-            Packet thisPainting = invPics[i];
+                Packet thisPainting = invPics[i];
 
-            ImageConverter convertData = new ImageConverter();
-            Image image = (Image)convertData.ConvertFrom(thisPainting.Painting);
+                ImageConverter convertData = new ImageConverter();
+                Image image = (Image)convertData.ConvertFrom(thisPainting.Painting);
 
-            var frm = new InvDisplay(image, thisPainting.Title, thisPainting.Username, thisPainting.Description);
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+
+                displayWindow = new InvDisplay(image, thisPainting.Title, thisPainting.Username, thisPainting.Description);
+                displayWindow.Location = this.Location;
+                displayWindow.StartPosition = FormStartPosition.Manual;
+                displayWindow.FormClosing += delegate { this.Show(); };
+                displayWindow.Show();
+                Globals.canOpenDisplay = false;
+            }
         }
     }
 }

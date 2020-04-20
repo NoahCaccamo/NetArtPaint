@@ -10,5 +10,6 @@ namespace Common
     {
         public static PlayerInfo playerInfo = new PlayerInfo();
         public static Client client = new Client();
+        public static bool canOpenDisplay = true;
     }
 }

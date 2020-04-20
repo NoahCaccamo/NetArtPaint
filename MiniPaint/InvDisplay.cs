@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common;
 
 namespace MiniPaint
 {
@@ -37,6 +38,7 @@ namespace MiniPaint
                 SaveFileDialog dialog = new SaveFileDialog();
                 dialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
                 dialog.Title = "Save an Image File";
+                dialog.FileName = title;
                 dialog.ShowDialog();
 
                 // If the file name is not an empty string open it for saving.
@@ -85,6 +87,11 @@ namespace MiniPaint
             {
                 label.Text = text;
             }
+        }
+
+        private void InvDisplay_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Globals.canOpenDisplay = true;
         }
 
         delegate void SetPicCallback(PictureBox pictureBox, Image image);
