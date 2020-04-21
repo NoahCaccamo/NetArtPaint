@@ -4,4 +4,14 @@
     <StartAction>Project</StartAction>
     <StartProgram>C:\Users\ncaccamo\Downloads\MiniPaint\server\bin\Debug\server.exe</StartProgram>
   </PropertyGroup>
+  <PropertyGroup>
+    <PublishUrlHistory />
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
 </Project>

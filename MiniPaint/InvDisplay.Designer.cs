@@ -103,6 +103,7 @@
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.PaintingBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "InvDisplay";
             this.Text = "InvDisplay";

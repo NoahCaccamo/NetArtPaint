@@ -23,6 +23,7 @@ namespace MiniPaint
         private static System.Timers.Timer cTimer;
         static int auctionTimer = 999;
         bool gotPainting = false;
+        bool gotPayout = false;
 
         InvDisplay displayWindow = null;
 
@@ -106,12 +107,22 @@ namespace MiniPaint
 
                 case ((int)PlayerInfo.recievedType.loseBid):
                     SetText(Notifications, packet.Username + "Won the bid");
+                    if (!gotPayout && packet.Artist == Globals.playerInfo.username)
+                    {
+                        gotPayout = true;
+                        int reducedCut = (int)(packet.bid * 0.8);
+                        Globals.playerInfo.money += reducedCut;
+                        SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
+                    }
+
+
                     UpdateTimer(packet);
                     break;
 
                 case ((int)PlayerInfo.recievedType.time):
                     UpdateTimer(packet);
                     SetText(TitleLabel, packet.Title);
+                    SetText(ArtistLabel, "By: " + packet.Artist);
                     SetText(DescriptionLabel, packet.Description);
                     SetText(CurrentHighLabel, packet.Username + " in the lead with a bid of " + packet.bid);
                     break;

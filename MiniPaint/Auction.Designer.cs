@@ -38,6 +38,7 @@
             this.MoneyLabel = new System.Windows.Forms.Label();
             this.CurrentHighLabel = new System.Windows.Forms.Label();
             this.InventoryListView = new System.Windows.Forms.ListView();
+            this.ArtistLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +131,7 @@
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DescriptionLabel.Location = new System.Drawing.Point(144, 130);
+            this.DescriptionLabel.Location = new System.Drawing.Point(144, 137);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(79, 17);
             this.DescriptionLabel.TabIndex = 7;
@@ -167,11 +168,22 @@
             this.InventoryListView.UseCompatibleStateImageBehavior = false;
             this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
             // 
+            // ArtistLabel
+            // 
+            this.ArtistLabel.AutoSize = true;
+            this.ArtistLabel.Location = new System.Drawing.Point(149, 120);
+            this.ArtistLabel.Name = "ArtistLabel";
+            this.ArtistLabel.Size = new System.Drawing.Size(61, 13);
+            this.ArtistLabel.TabIndex = 11;
+            this.ArtistLabel.Text = "Artist Name";
+            this.ArtistLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Auction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 496);
+            this.Controls.Add(this.ArtistLabel);
             this.Controls.Add(this.InventoryListView);
             this.Controls.Add(this.CurrentHighLabel);
             this.Controls.Add(this.MoneyLabel);
@@ -182,6 +194,7 @@
             this.Controls.Add(this.BidEntry);
             this.Controls.Add(this.BuyCanvas);
             this.Controls.Add(this.PlaceBid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Auction";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Auction_Load);
@@ -202,5 +215,6 @@
         private System.Windows.Forms.Label MoneyLabel;
         private System.Windows.Forms.Label CurrentHighLabel;
         private System.Windows.Forms.ListView InventoryListView;
+        private System.Windows.Forms.Label ArtistLabel;
     }
 }

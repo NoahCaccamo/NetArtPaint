@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.JoinButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.UsernameBox = new System.Windows.Forms.TextBox();
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.IpBox = new System.Windows.Forms.TextBox();
@@ -46,15 +46,15 @@
             this.JoinButton.UseVisualStyleBackColor = true;
             this.JoinButton.Click += new System.EventHandler(this.JoinButton_Click);
             // 
-            // button2
+            // ExitButton
             // 
-            this.button2.Location = new System.Drawing.Point(150, 369);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ExitButton.Location = new System.Drawing.Point(150, 369);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 1;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // UsernameBox
             // 
@@ -98,8 +98,9 @@
             this.Controls.Add(this.IpBox);
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.UsernameBox);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.JoinButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "StartupInfo";
             this.Text = "StartupInfo";
             this.Load += new System.EventHandler(this.StartupInfo_Load);
@@ -111,7 +112,7 @@
         #endregion
 
         private System.Windows.Forms.Button JoinButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.TextBox UsernameBox;
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.TextBox IpBox;

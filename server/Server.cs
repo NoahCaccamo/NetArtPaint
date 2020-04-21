@@ -21,7 +21,7 @@ namespace server
         private UdpClient udpServer;
         private int port;
         private IPEndPoint remoteEP;
-        public int HighestBid;
+        public static int HighestBid;
         public string HighestBidder;
         public string LastHighestBidder;
         static int AuctionPos = -1;
@@ -69,6 +69,7 @@ namespace server
                     {
                         sTimer.Start();
                         stopWatch.Restart();
+                        HighestBid = 0;
                         AuctionPos++;
                         currentPic = pics.ElementAt(AuctionPos);
                     }
@@ -98,7 +99,6 @@ namespace server
                             //packToSend.Painting = GIVE PAINTING
                             HighestBidder = "";
                             LastHighestBidder = "";
-                            HighestBid = 0;
                         }
                         packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
                     }
@@ -107,6 +107,8 @@ namespace server
                         packToSend.Type = (int)PlayerInfo.recievedType.loseBid;
                         packToSend.Username = LastHighestBidder;
                         packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
+                        packToSend.Artist = currentPic.Username;
+                        packToSend.bid = HighestBid;
                         ///MAKE IT LOSE
                     }
                     break;
@@ -121,6 +123,7 @@ namespace server
                         packToSend.Description = currentPic.Description;
                         packToSend.Username = LastHighestBidder;
                         packToSend.bid = HighestBid;
+                        packToSend.Artist = currentPic.Username;
                     }
 
                     break;
@@ -191,13 +194,13 @@ namespace server
             {
                 Console.WriteLine("BAPPATY BOOP");
                 AuctionPos++;
+                HighestBid = 0;
                 sTimer.Start();
                 stopWatch.Restart();
             }
             Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
                           e.SignalTime);
         }
-
 
 
     }

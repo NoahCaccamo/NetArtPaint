@@ -17,5 +17,6 @@ namespace Common
         public int bid;
         public int cost;
         public int time;
+        public string Artist;
     }
 }
