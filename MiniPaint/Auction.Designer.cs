@@ -43,6 +43,8 @@
             this.ChatHistoryRichText = new System.Windows.Forms.RichTextBox();
             this.SendButton = new System.Windows.Forms.Button();
             this.MessageBox = new System.Windows.Forms.TextBox();
+            this.ComissionButton = new System.Windows.Forms.Button();
+            this.ComissionBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,12 +219,32 @@
             this.MessageBox.Size = new System.Drawing.Size(285, 20);
             this.MessageBox.TabIndex = 16;
             // 
+            // ComissionButton
+            // 
+            this.ComissionButton.Location = new System.Drawing.Point(26, 396);
+            this.ComissionButton.Name = "ComissionButton";
+            this.ComissionButton.Size = new System.Drawing.Size(110, 23);
+            this.ComissionButton.TabIndex = 17;
+            this.ComissionButton.Text = "StartComission";
+            this.ComissionButton.UseVisualStyleBackColor = true;
+            this.ComissionButton.Click += new System.EventHandler(this.ComissionButton_Click);
+            // 
+            // ComissionBar
+            // 
+            this.ComissionBar.Location = new System.Drawing.Point(26, 420);
+            this.ComissionBar.Maximum = 30;
+            this.ComissionBar.Name = "ComissionBar";
+            this.ComissionBar.Size = new System.Drawing.Size(110, 10);
+            this.ComissionBar.TabIndex = 18;
+            // 
             // Auction
             // 
             this.AcceptButton = this.SendButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 496);
+            this.Controls.Add(this.ComissionBar);
+            this.Controls.Add(this.ComissionButton);
             this.Controls.Add(this.MessageBox);
             this.Controls.Add(this.SendButton);
             this.Controls.Add(this.ChatHistoryRichText);
@@ -241,6 +263,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Auction";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Auction_FormClosed);
             this.Load += new System.EventHandler(this.Auction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).EndInit();
             this.ResumeLayout(false);
@@ -264,5 +287,7 @@
         private System.Windows.Forms.RichTextBox ChatHistoryRichText;
         private System.Windows.Forms.Button SendButton;
         private System.Windows.Forms.TextBox MessageBox;
+        private System.Windows.Forms.Button ComissionButton;
+        private System.Windows.Forms.ProgressBar ComissionBar;
     }
 }

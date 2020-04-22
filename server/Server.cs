@@ -87,6 +87,7 @@ namespace server
                     break;
 
                 case (int)pType.EndBid:
+                    packToSend.biddingHistory = biddingHistory;
                     if (deserializedPacket.Username == HighestBidder)
                     {
                         if (pics.Count >= 1)
@@ -102,6 +103,8 @@ namespace server
                             //packToSend.Painting = GIVE PAINTING
                             HighestBidder = "";
                             LastHighestBidder = "";
+
+                            biddingHistory = newBidEntry(deserializedPacket.Username + " won the painting " + currentPic.Title + " with a bid of " + HighestBid + "!");
                         }
                         packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
                     }

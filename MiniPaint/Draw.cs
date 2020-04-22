@@ -10,11 +10,54 @@ namespace Common
 {
     public partial class Draw : Form
     {
-        public Draw()
+
+        bool isCommission;
+        private Random rnd = new Random();
+        int numColors;
+        int[] colorP = new int[4];
+        string fullSentance;
+        public Draw(bool _isCommission)
         {
             InitializeComponent();
             myBit = new Bitmap(pnl_Draw.Width, pnl_Draw.Height);
              g = pnl_Draw.CreateGraphics();
+            isCommission = _isCommission;
+            if (isCommission)
+            {
+                Save.Visible = false;
+                AnalyzeButton.Visible = true;
+                CollectMoneyButton.Visible = true;
+                ClientRequestLabel.Visible = true;
+
+                Color randomColor1 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                Color randomColor2 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                Color randomColor3 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                Color randomColor4 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+
+                Color1Button.BackColor = randomColor1;
+                Color2Button.BackColor = randomColor2;
+                Color3Button.BackColor = randomColor3;
+                Color4Button.BackColor = randomColor4;
+
+                numColors = rnd.Next(2, 5);
+                int totalP = 100;
+
+                for (int i = 0; i < numColors; i++)
+                {
+                    colorP[i] = rnd.Next(0, totalP);
+                    totalP -= colorP[i];
+
+                    if (i != numColors - 1)
+                    {
+                        fullSentance += colorP[i] + "% colour " + (i + 1) + ", ";
+                    } else
+                    {
+                        fullSentance += ", and " + colorP[i] + "% colour " + (i + 1) + ".";
+                    }
+                }
+
+                SetText(ClientRequestLabel, fullSentance);
+            }
         }
         bool startPaint = false;
         Graphics g;
@@ -147,18 +190,35 @@ namespace Common
             Rectangle rect = pnl_Draw.RectangleToScreen(pnl_Draw.ClientRectangle);
             grap.CopyFromScreen(rect.Location, Point.Empty, pnl_Draw.Size);
 
-            Packet newPacket = new Packet();
-            var ms = new MemoryStream();
-            myBit.Save(ms, ImageFormat.Jpeg);
-            newPacket.Painting = ms.ToArray();
+            if (!isCommission)
+            {
+                Packet newPacket = new Packet();
+                var ms = new MemoryStream();
+                myBit.Save(ms, ImageFormat.Jpeg);
+                newPacket.Painting = ms.ToArray();
 
-            newPacket.Type = (int)pType.SubmitPainting;
-            newPacket.Title = TitleBox.Text;
-            newPacket.Description = DescriptionBox.Text;
-            newPacket.Username = Globals.playerInfo.username;
-            client.send(newPacket);
-            //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
-            this.Close();
+                newPacket.Type = (int)pType.SubmitPainting;
+                newPacket.Title = TitleBox.Text;
+                newPacket.Description = DescriptionBox.Text;
+                newPacket.Username = Globals.playerInfo.username;
+                client.send(newPacket);
+                //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
+                this.Close();
+            }
+        }
+
+        private int CountPixels(Bitmap bm, Color target_color)
+        {
+            // Loop through the pixels.
+            int matches = 0;
+            for (int y = 0; y < bm.Height; y++)
+            {
+                for (int x = 0; x < bm.Width; x++)
+                {
+                    if (bm.GetPixel(x, y) == target_color) matches++;
+                }
+            }
+            return matches;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -170,6 +230,47 @@ namespace Common
         {
 
         }
+
+        private void Color1Button_Click(object sender, EventArgs e)
+        {
+            btn_PenColor.BackColor = Color1Button.BackColor;
+        }
+
+        private void Color2Button_Click(object sender, EventArgs e)
+        {
+            btn_PenColor.BackColor = Color2Button.BackColor;
+        }
+
+        private void Color3Button_Click(object sender, EventArgs e)
+        {
+            btn_PenColor.BackColor = Color3Button.BackColor;
+        }
+
+        private void Color4Button_Click(object sender, EventArgs e)
+        {
+            btn_PenColor.BackColor = Color4Button.BackColor;
+        }
+
+        private void AnalyzeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        delegate void SetTextCallback(Label label, string text);
+        private void SetText(Label label, string text)
+        {
+            if (label.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { label, text });
+            }
+            else
+            {
+                label.Text = text;
+            }
+        }
+
     }
 
 }

@@ -11,11 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using System.Threading;
+using System.Drawing.Text;
 
 namespace MiniPaint
 {
     public partial class Auction : Form
     {
+        PrivateFontCollection pfc = new PrivateFontCollection();
+        
+        //Font gameFont = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
+
         List<Packet> invPics = new List<Packet>();
 
 
@@ -34,6 +39,8 @@ namespace MiniPaint
             Globals.playerInfo.money = 5000;
             startTimer();
             startChatTimer();
+            pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
+            Console.WriteLine(System.Windows.Forms.Application.StartupPath);
         }
 
         private void PlaceBid_Click(object sender, EventArgs e)
@@ -62,7 +69,7 @@ namespace MiniPaint
             if (Globals.playerInfo.money >= 500)
             {
                 Globals.playerInfo.money -= 500;
-                var frm = new Draw();
+                var frm = new Draw(false);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Show(); };
@@ -87,6 +94,8 @@ namespace MiniPaint
 
                 case ((int)PlayerInfo.recievedType.winBid):
                     UpdateTimer(packet);
+                    Array.Reverse(packet.biddingHistory);
+                    SetTextHistory(BiddingHistoryRichText, packet.biddingHistory);
                     if (!gotPainting)
                     {
                         gotPainting = true;
@@ -109,6 +118,8 @@ namespace MiniPaint
 
                 case ((int)PlayerInfo.recievedType.loseBid):
                     SetText(Notifications, packet.Username + "Won the bid");
+                    Array.Reverse(packet.biddingHistory);
+                    SetTextHistory(BiddingHistoryRichText, packet.biddingHistory);
                     if (!gotPayout && packet.Artist == Globals.playerInfo.username)
                     {
                         gotPayout = true;
@@ -184,6 +195,14 @@ namespace MiniPaint
             packToSend.Username = Globals.playerInfo.username;
 
             unpack(client.send(packToSend));
+
+            if (ComissionBar.Value < ComissionBar.Maximum)
+            {
+                SetProgressBar(ComissionBar, ComissionBar.Value + 1);
+            } else
+            {
+                EnableComissionButton();
+            }
 
         }
 
@@ -277,6 +296,36 @@ namespace MiniPaint
             }
         }
 
+        delegate void SetProgressBarCallback(ProgressBar pb, int val);
+
+        private void SetProgressBar(ProgressBar pb, int val)
+        {
+            if (pb.InvokeRequired)
+            {
+                SetProgressBarCallback d = new SetProgressBarCallback(SetProgressBar);
+                this.Invoke(d, new object[] { pb, val });
+            }
+            else
+            {
+                pb.Value = val;
+            }
+        }
+
+        delegate void EnableComissionButtonCallback();
+        private void EnableComissionButton()
+        {
+            if (ComissionButton.InvokeRequired)
+            {
+                EnableComissionButtonCallback d = new EnableComissionButtonCallback(EnableComissionButton);
+                this.Invoke(d, new object[] {  });
+            }
+            else
+            {
+                ComissionButton.Enabled = true;
+            }
+        }
+
+
         private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
 
@@ -350,6 +399,22 @@ namespace MiniPaint
 
                 unpack(client.send(packetToSend));
             }
+        }
+
+        private void Auction_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ComissionButton_Click(object sender, EventArgs e)
+        {
+            ComissionButton.Enabled = false;
+            ComissionBar.Value = 0;
+            var frm = new Draw(true);
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
         }
     }
 }
