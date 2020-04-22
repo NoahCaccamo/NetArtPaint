@@ -39,6 +39,10 @@
             this.CurrentHighLabel = new System.Windows.Forms.Label();
             this.InventoryListView = new System.Windows.Forms.ListView();
             this.ArtistLabel = new System.Windows.Forms.Label();
+            this.BiddingHistoryRichText = new System.Windows.Forms.RichTextBox();
+            this.ChatHistoryRichText = new System.Windows.Forms.RichTextBox();
+            this.SendButton = new System.Windows.Forms.Button();
+            this.MessageBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BidEntry)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,10 +164,10 @@
             // InventoryListView
             // 
             this.InventoryListView.HideSelection = false;
-            this.InventoryListView.Location = new System.Drawing.Point(419, 147);
+            this.InventoryListView.Location = new System.Drawing.Point(383, 161);
             this.InventoryListView.MultiSelect = false;
             this.InventoryListView.Name = "InventoryListView";
-            this.InventoryListView.Size = new System.Drawing.Size(346, 272);
+            this.InventoryListView.Size = new System.Drawing.Size(209, 272);
             this.InventoryListView.TabIndex = 10;
             this.InventoryListView.UseCompatibleStateImageBehavior = false;
             this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
@@ -178,11 +182,51 @@
             this.ArtistLabel.Text = "Artist Name";
             this.ArtistLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BiddingHistoryRichText
+            // 
+            this.BiddingHistoryRichText.Location = new System.Drawing.Point(342, 4);
+            this.BiddingHistoryRichText.Name = "BiddingHistoryRichText";
+            this.BiddingHistoryRichText.ReadOnly = true;
+            this.BiddingHistoryRichText.Size = new System.Drawing.Size(250, 129);
+            this.BiddingHistoryRichText.TabIndex = 13;
+            this.BiddingHistoryRichText.Text = "";
+            // 
+            // ChatHistoryRichText
+            // 
+            this.ChatHistoryRichText.Location = new System.Drawing.Point(646, 76);
+            this.ChatHistoryRichText.Name = "ChatHistoryRichText";
+            this.ChatHistoryRichText.ReadOnly = true;
+            this.ChatHistoryRichText.Size = new System.Drawing.Size(285, 343);
+            this.ChatHistoryRichText.TabIndex = 14;
+            this.ChatHistoryRichText.Text = "";
+            // 
+            // SendButton
+            // 
+            this.SendButton.Location = new System.Drawing.Point(820, 459);
+            this.SendButton.Name = "SendButton";
+            this.SendButton.Size = new System.Drawing.Size(75, 23);
+            this.SendButton.TabIndex = 15;
+            this.SendButton.Text = "Send";
+            this.SendButton.UseVisualStyleBackColor = true;
+            this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
+            // 
+            // MessageBox
+            // 
+            this.MessageBox.Location = new System.Drawing.Point(646, 426);
+            this.MessageBox.Name = "MessageBox";
+            this.MessageBox.Size = new System.Drawing.Size(285, 20);
+            this.MessageBox.TabIndex = 16;
+            // 
             // Auction
             // 
+            this.AcceptButton = this.SendButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 496);
+            this.ClientSize = new System.Drawing.Size(943, 496);
+            this.Controls.Add(this.MessageBox);
+            this.Controls.Add(this.SendButton);
+            this.Controls.Add(this.ChatHistoryRichText);
+            this.Controls.Add(this.BiddingHistoryRichText);
             this.Controls.Add(this.ArtistLabel);
             this.Controls.Add(this.InventoryListView);
             this.Controls.Add(this.CurrentHighLabel);
@@ -216,5 +260,9 @@
         private System.Windows.Forms.Label CurrentHighLabel;
         private System.Windows.Forms.ListView InventoryListView;
         private System.Windows.Forms.Label ArtistLabel;
+        private System.Windows.Forms.RichTextBox BiddingHistoryRichText;
+        private System.Windows.Forms.RichTextBox ChatHistoryRichText;
+        private System.Windows.Forms.Button SendButton;
+        private System.Windows.Forms.TextBox MessageBox;
     }
 }

@@ -8,7 +8,7 @@ namespace Common
 {
     public class Packet
     {
-        public enum pType { SubmitPainting, Bid, EndBid, RecieveMoney, PayForPainting, RequestTime }
+        public enum pType { SubmitPainting, Bid, EndBid, RecieveMoney, PayForPainting, RequestTime, RequestChat, SendChat }
         public int Type;
         public string Username;
         public byte[] Painting;
@@ -18,5 +18,9 @@ namespace Common
         public int cost;
         public int time;
         public string Artist;
+        public string Message;
+
+        public string[] biddingHistory = new string[8];
+        public string[] chatHistory = new string[8];
     }
 }

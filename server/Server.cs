@@ -17,6 +17,9 @@ namespace server
     {
         static List<Packet> pics = new List<Packet>();
 
+        string[] biddingHistory = new string[8];
+        string[] chatHistory = new string[20];
+
 
         private UdpClient udpServer;
         private int port;
@@ -124,9 +127,22 @@ namespace server
                         packToSend.Username = LastHighestBidder;
                         packToSend.bid = HighestBid;
                         packToSend.Artist = currentPic.Username;
+                        packToSend.biddingHistory = biddingHistory;
                     }
 
                     break;
+
+                case (int)pType.SendChat:
+                    packToSend.Type = (int)PlayerInfo.recievedType.upChat;
+                    chatHistory = newChatEntry(deserializedPacket.Username + ": " + deserializedPacket.Message);
+                    packToSend.chatHistory = chatHistory;
+                    break;
+
+                case (int)pType.RequestChat:
+                    packToSend.Type = (int)PlayerInfo.recievedType.upChat;
+                    packToSend.chatHistory = chatHistory;
+                    break;
+
                     return default;
             }
 
@@ -167,6 +183,8 @@ namespace server
                 HighestBid = UserBid;
                 HighestBidder = UserName;
                 LastHighestBidder = HighestBidder;
+                biddingHistory = newBidEntry(UserName + " in the lead with a bid of " + UserBid);
+
                 return (int)PlayerInfo.recievedType.bidT;
             }
             else
@@ -202,6 +220,21 @@ namespace server
                           e.SignalTime);
         }
 
+        string[] newBidEntry(string bidText)
+        {
+            string[] tempArray = new string[biddingHistory.Length];
+            Array.Copy(biddingHistory, 0, tempArray, 1, biddingHistory.Length - 1);
+            tempArray[0] = bidText;
+            return tempArray;
+        }
+
+        string[] newChatEntry(string chatText)
+        {
+            string[] tempArray = new string[chatHistory.Length];
+            Array.Copy(chatHistory, 0, tempArray, 1, chatHistory.Length - 1);
+            tempArray[0] = chatText;
+            return tempArray;
+        }
 
     }
 

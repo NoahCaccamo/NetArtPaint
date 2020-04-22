@@ -21,6 +21,7 @@ namespace MiniPaint
 
         Client client = new Client(Globals.playerInfo.ip);
         private static System.Timers.Timer cTimer;
+        private static System.Timers.Timer chatTimer;
         static int auctionTimer = 999;
         bool gotPainting = false;
         bool gotPayout = false;
@@ -32,6 +33,7 @@ namespace MiniPaint
             InitializeComponent();
             Globals.playerInfo.money = 5000;
             startTimer();
+            startChatTimer();
         }
 
         private void PlaceBid_Click(object sender, EventArgs e)
@@ -125,6 +127,13 @@ namespace MiniPaint
                     SetText(ArtistLabel, "By: " + packet.Artist);
                     SetText(DescriptionLabel, packet.Description);
                     SetText(CurrentHighLabel, packet.Username + " in the lead with a bid of " + packet.bid);
+                    Array.Reverse(packet.biddingHistory);
+                    SetTextHistory(BiddingHistoryRichText, packet.biddingHistory);
+                    break;
+
+                case ((int)PlayerInfo.recievedType.upChat):
+                    Array.Reverse(packet.chatHistory);
+                    SetTextHistory(ChatHistoryRichText, packet.chatHistory);
                     break;
             }
         }
@@ -151,12 +160,22 @@ namespace MiniPaint
             cTimer.Enabled = true;
         }
 
+        void startChatTimer()
+        {
+            chatTimer = new System.Timers.Timer();
+            chatTimer.Interval = 250;
+            chatTimer.Elapsed += FetchChatHistory;
+            chatTimer.AutoReset = true;
+            chatTimer.Enabled = true;
+        }
+
         private void FetchServerTime(Object source, System.Timers.ElapsedEventArgs e)
         {
             Packet packToSend = new Packet();
             if (auctionTimer > 0)
             {
                 gotPainting = false;
+                gotPayout = false;
                 packToSend.Type = (int)Packet.pType.RequestTime;
             } else
             {
@@ -166,6 +185,14 @@ namespace MiniPaint
 
             unpack(client.send(packToSend));
 
+        }
+
+        private void FetchChatHistory(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            Packet packToSend = new Packet();
+            packToSend.Type = (int)Packet.pType.RequestChat;
+            packToSend.Username = Globals.playerInfo.username;
+            unpack(client.send(packToSend));
         }
 
 
@@ -235,6 +262,21 @@ namespace MiniPaint
             }
         }
 
+        delegate void SetTextHistoryCallback(RichTextBox listView, string[] text);
+
+        private void SetTextHistory(RichTextBox listView, string[] text)
+        {
+            if (listView.InvokeRequired)
+            {
+                SetTextHistoryCallback d = new SetTextHistoryCallback(SetTextHistory);
+                this.Invoke(d, new object[] { listView, text });
+            }
+            else
+            {
+                listView.Text = (string.Join(Environment.NewLine, text));
+            }
+        }
+
         private void BidEntry_ValueChanged(object sender, EventArgs e)
         {
 
@@ -291,6 +333,22 @@ namespace MiniPaint
                 displayWindow.FormClosing += delegate { this.Show(); };
                 displayWindow.Show();
                 Globals.canOpenDisplay = false;
+            }
+        }
+
+        private void SendButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(MessageBox.Text))
+            {
+                string userMessage = MessageBox.Text;
+                Packet packetToSend = new Packet();
+                packetToSend.Type = (int)Packet.pType.SendChat;
+                packetToSend.Username = Globals.playerInfo.username;
+                packetToSend.Message = userMessage;
+
+                MessageBox.Clear();
+
+                unpack(client.send(packetToSend));
             }
         }
     }
