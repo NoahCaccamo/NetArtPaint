@@ -17,7 +17,7 @@ namespace MiniPaint
 {
     public partial class Auction : Form
     {
-        PrivateFontCollection pfc = new PrivateFontCollection();
+        //PrivateFontCollection pfc = new PrivateFontCollection();
         
         //Font gameFont = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
 
@@ -38,9 +38,9 @@ namespace MiniPaint
             InitializeComponent();
             Globals.playerInfo.money = 5000;
             startTimer();
-            startChatTimer();
-            pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
-            Console.WriteLine(System.Windows.Forms.Application.StartupPath);
+            //startChatTimer();
+          //  pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
+           // Console.WriteLine(System.Windows.Forms.Application.StartupPath);
         }
 
         private void PlaceBid_Click(object sender, EventArgs e)
@@ -54,7 +54,9 @@ namespace MiniPaint
                 packetToSend.Type = (int)Packet.pType.Bid;
                 packetToSend.bid = userBid;
 
-                unpack(client.send(packetToSend));
+                client.send(packetToSend);
+                unpack(client.Recieve());
+
             }
 
             else
@@ -140,6 +142,8 @@ namespace MiniPaint
                     SetText(CurrentHighLabel, packet.Username + " in the lead with a bid of " + packet.bid);
                     Array.Reverse(packet.biddingHistory);
                     SetTextHistory(BiddingHistoryRichText, packet.biddingHistory);
+                    Array.Reverse(packet.chatHistory);
+                    SetTextHistory(ChatHistoryRichText, packet.chatHistory);
                     break;
 
                 case ((int)PlayerInfo.recievedType.upChat):
@@ -165,7 +169,7 @@ namespace MiniPaint
         void startTimer()
         {
             cTimer = new System.Timers.Timer();
-            cTimer.Interval = 1000;
+            cTimer.Interval = 250;
             cTimer.Elapsed += FetchServerTime;
             cTimer.AutoReset = true;
             cTimer.Enabled = true;
@@ -174,7 +178,7 @@ namespace MiniPaint
         void startChatTimer()
         {
             chatTimer = new System.Timers.Timer();
-            chatTimer.Interval = 250;
+            chatTimer.Interval = 501;
             chatTimer.Elapsed += FetchChatHistory;
             chatTimer.AutoReset = true;
             chatTimer.Enabled = true;
@@ -194,8 +198,11 @@ namespace MiniPaint
             }
             packToSend.Username = Globals.playerInfo.username;
 
-            unpack(client.send(packToSend));
 
+            client.send(packToSend);
+            unpack(client.Recieve());
+            
+            //chatUpdater();
             if (ComissionBar.Value < ComissionBar.Maximum)
             {
                 SetProgressBar(ComissionBar, ComissionBar.Value + 1);
@@ -208,12 +215,18 @@ namespace MiniPaint
 
         private void FetchChatHistory(Object source, System.Timers.ElapsedEventArgs e)
         {
+            chatUpdater();
+        }
+
+
+        void chatUpdater()
+        {
             Packet packToSend = new Packet();
             packToSend.Type = (int)Packet.pType.RequestChat;
             packToSend.Username = Globals.playerInfo.username;
-            unpack(client.send(packToSend));
+            client.send(packToSend);
+            unpack(client.Recieve());
         }
-
 
         delegate void SetTextCallback(Label label, string text);
 
@@ -397,7 +410,8 @@ namespace MiniPaint
 
                 MessageBox.Clear();
 
-                unpack(client.send(packetToSend));
+                client.send(packetToSend);
+                unpack(client.Recieve());
             }
         }
 

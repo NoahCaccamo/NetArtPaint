@@ -122,6 +122,7 @@ namespace server
                 case (int)pType.RequestTime:
                     packToSend.Type = (int)PlayerInfo.recievedType.time;
                     packToSend.time = totalTimerTime - (int)stopWatch.ElapsedMilliseconds;
+                    packToSend.chatHistory = chatHistory;
                     if (sTimer.Enabled == true && pics.Count >= 1)
                     {
                         currentPic = pics.ElementAt(AuctionPos);

@@ -24,7 +24,7 @@ namespace Common
             client.Connect(ep);
         }
 
-        public Packet send(Packet packet)
+        public void send(Packet packet)
         {
             // send data
 
@@ -37,6 +37,10 @@ namespace Common
            // byte[] byteArray = ms.ToArray();
             client.Send(msgBytes, msgBytes.Length);
 
+        }
+
+        public Packet Recieve()
+        {
             // then receive data
             var receivedData = client.Receive(ref ep);
             string p = Encoding.ASCII.GetString(receivedData);
@@ -48,8 +52,8 @@ namespace Common
 
             //Console.WriteLine("receive data from " + ep.ToString());
             //Console.WriteLine("Received: " + Encoding.ASCII.GetString(receivedData));
-        }
 
+        }
         public void Bid(int UserInput)
         {
         //    UserInput = 
