@@ -354,11 +354,13 @@ namespace MiniPaint
         private void Auction_Load(object sender, EventArgs e)
         {
             pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
+            pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFontSpaced.ttf");
             //InventoryListView.View = View.LargeIcon;
 
             gameFontS = new Font(pfc.Families[0], 8, FontStyle.Regular);
             gameFontM = new Font(pfc.Families[0], 12, FontStyle.Regular);
             gameFontL = new Font(pfc.Families[0], 18, FontStyle.Regular);
+
             ArtistLabel.Font = gameFontM;
             TitleLabel.Font = gameFontL;
             DescriptionLabel.Font = gameFontS;
