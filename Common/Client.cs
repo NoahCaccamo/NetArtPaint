@@ -46,7 +46,7 @@ namespace Common
             
             _sReader = new StreamReader(client.GetStream(), Encoding.ASCII);
 
-            var p = _sReader.ReadToEnd();
+            var p = _sReader.ReadLine();
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
             return deserializedPacket;
         }
