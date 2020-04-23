@@ -21,7 +21,7 @@ namespace Common
         /// <param name="port"> Port the server is running on </param>
         public Client(string ip = "127.0.0.1", int port = 55555)
         {
-            client = new TcpClient("127.0.0.1", port);
+            client = new TcpClient(ip, port);
         }
 
         public void Send(Packet packet)
