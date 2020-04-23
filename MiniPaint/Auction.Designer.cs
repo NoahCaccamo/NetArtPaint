@@ -213,7 +213,6 @@
             this.BiddingHistoryRichText.Location = new System.Drawing.Point(376, 360);
             this.BiddingHistoryRichText.Name = "BiddingHistoryRichText";
             this.BiddingHistoryRichText.ReadOnly = true;
-            this.BiddingHistoryRichText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.BiddingHistoryRichText.Size = new System.Drawing.Size(213, 208);
             this.BiddingHistoryRichText.TabIndex = 13;
             this.BiddingHistoryRichText.Text = "";
@@ -226,7 +225,6 @@
             this.ChatHistoryRichText.Location = new System.Drawing.Point(12, 360);
             this.ChatHistoryRichText.Name = "ChatHistoryRichText";
             this.ChatHistoryRichText.ReadOnly = true;
-            this.ChatHistoryRichText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.ChatHistoryRichText.Size = new System.Drawing.Size(358, 295);
             this.ChatHistoryRichText.TabIndex = 14;
             this.ChatHistoryRichText.Text = "";

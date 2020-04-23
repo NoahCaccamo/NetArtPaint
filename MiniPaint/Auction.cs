@@ -362,7 +362,7 @@ namespace MiniPaint
             gameFontS = new Font(pfc.Families[0], 8, FontStyle.Regular);
             gameFontM = new Font(pfc.Families[0], 12, FontStyle.Regular);
             gameFontL = new Font(pfc.Families[0], 18, FontStyle.Regular);
-            gameFontSpaced = new Font(pfc2.Families[0], 12, FontStyle.Regular);
+            gameFontSpaced = new Font(pfc2.Families[0], 8, FontStyle.Regular);
 
             ArtistLabel.Font = gameFontM;
             TitleLabel.Font = gameFontL;
@@ -374,12 +374,12 @@ namespace MiniPaint
             PlaceBid.Font = gameFontL;
             BuyCanvas.Font = gameFontM;
             ComissionButton.Font = gameFontM;
-            SendButton.Font = Font = gameFontS;
-            InventoryListView.Font = Font = gameFontS;
-            ChatHistoryRichText.Font = Font = gameFontSpaced;
-            BiddingHistoryRichText.Font = Font = gameFontSpaced;
-            MessageBox.Font = Font = gameFontSpaced;
-            BidEntry.Font = Font = gameFontM;
+            SendButton.Font = gameFontS;
+            InventoryListView.Font = gameFontS;
+            ChatHistoryRichText.Font = gameFontSpaced;
+            BiddingHistoryRichText.Font = gameFontSpaced;
+            MessageBox.Font = gameFontSpaced;
+            BidEntry.Font = gameFontM;
         }
 
 
