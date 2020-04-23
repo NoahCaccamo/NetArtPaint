@@ -72,7 +72,7 @@
             this.BuyCanvas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.BuyCanvas.Location = new System.Drawing.Point(597, 609);
             this.BuyCanvas.Name = "BuyCanvas";
-            this.BuyCanvas.Size = new System.Drawing.Size(144, 87);
+            this.BuyCanvas.Size = new System.Drawing.Size(164, 87);
             this.BuyCanvas.TabIndex = 2;
             this.BuyCanvas.Text = "Buy Canvas  (30 bucks)";
             this.BuyCanvas.UseVisualStyleBackColor = false;
@@ -112,13 +112,13 @@
             // 
             // Notifications
             // 
-            this.Notifications.AutoSize = true;
             this.Notifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.Notifications.Location = new System.Drawing.Point(646, 29);
+            this.Notifications.Location = new System.Drawing.Point(376, 318);
             this.Notifications.Name = "Notifications";
-            this.Notifications.Size = new System.Drawing.Size(35, 13);
+            this.Notifications.Size = new System.Drawing.Size(384, 39);
             this.Notifications.TabIndex = 4;
-            this.Notifications.Text = "label1";
+            this.Notifications.Text = "Notifications";
+            this.Notifications.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Notifications.Click += new System.EventHandler(this.Notifications_Click);
             // 
             // TimerLabel
@@ -126,7 +126,7 @@
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TimerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            this.TimerLabel.Location = new System.Drawing.Point(22, 12);
+            this.TimerLabel.Location = new System.Drawing.Point(12, 17);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(67, 29);
             this.TimerLabel.TabIndex = 5;
@@ -134,34 +134,33 @@
             // 
             // TitleLabel
             // 
-            this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.TitleLabel.Location = new System.Drawing.Point(215, 112);
+            this.TitleLabel.Location = new System.Drawing.Point(13, 98);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(38, 20);
+            this.TitleLabel.Size = new System.Drawing.Size(357, 75);
             this.TitleLabel.TabIndex = 6;
             this.TitleLabel.Text = "Title";
-            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // DescriptionLabel
             // 
-            this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.DescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.DescriptionLabel.Location = new System.Drawing.Point(196, 228);
+            this.DescriptionLabel.Location = new System.Drawing.Point(12, 208);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(79, 17);
+            this.DescriptionLabel.Size = new System.Drawing.Size(357, 149);
             this.DescriptionLabel.TabIndex = 7;
             this.DescriptionLabel.Text = "Description";
+            this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MoneyLabel
             // 
             this.MoneyLabel.AutoSize = true;
             this.MoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MoneyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.MoneyLabel.Location = new System.Drawing.Point(456, 21);
+            this.MoneyLabel.Location = new System.Drawing.Point(602, 21);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(73, 24);
             this.MoneyLabel.TabIndex = 8;
@@ -173,11 +172,11 @@
             this.CurrentHighLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentHighLabel.AutoSize = true;
             this.CurrentHighLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.CurrentHighLabel.Location = new System.Drawing.Point(202, 62);
+            this.CurrentHighLabel.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.CurrentHighLabel.Location = new System.Drawing.Point(12, 60);
             this.CurrentHighLabel.Name = "CurrentHighLabel";
-            this.CurrentHighLabel.Size = new System.Drawing.Size(63, 13);
+            this.CurrentHighLabel.Size = new System.Drawing.Size(357, 50);
             this.CurrentHighLabel.TabIndex = 9;
             this.CurrentHighLabel.Text = "CurrentHigh";
             this.CurrentHighLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -188,21 +187,20 @@
             this.InventoryListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.InventoryListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.InventoryListView.HideSelection = false;
-            this.InventoryListView.Location = new System.Drawing.Point(376, 99);
+            this.InventoryListView.Location = new System.Drawing.Point(375, 60);
             this.InventoryListView.MultiSelect = false;
             this.InventoryListView.Name = "InventoryListView";
-            this.InventoryListView.Size = new System.Drawing.Size(365, 255);
+            this.InventoryListView.Size = new System.Drawing.Size(385, 255);
             this.InventoryListView.TabIndex = 10;
             this.InventoryListView.UseCompatibleStateImageBehavior = false;
             this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
             // 
             // ArtistLabel
             // 
-            this.ArtistLabel.AutoSize = true;
             this.ArtistLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.ArtistLabel.Location = new System.Drawing.Point(204, 184);
+            this.ArtistLabel.Location = new System.Drawing.Point(17, 153);
             this.ArtistLabel.Name = "ArtistLabel";
-            this.ArtistLabel.Size = new System.Drawing.Size(61, 13);
+            this.ArtistLabel.Size = new System.Drawing.Size(352, 55);
             this.ArtistLabel.TabIndex = 11;
             this.ArtistLabel.Text = "Artist Name";
             this.ArtistLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -240,9 +238,9 @@
             this.SendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
             this.SendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.SendButton.Location = new System.Drawing.Point(299, 676);
+            this.SendButton.Location = new System.Drawing.Point(290, 668);
             this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(71, 20);
+            this.SendButton.Size = new System.Drawing.Size(80, 41);
             this.SendButton.TabIndex = 15;
             this.SendButton.Text = "Send";
             this.SendButton.UseVisualStyleBackColor = false;
@@ -251,7 +249,7 @@
             // MessageBox
             // 
             this.MessageBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.MessageBox.Location = new System.Drawing.Point(12, 676);
+            this.MessageBox.Location = new System.Drawing.Point(12, 668);
             this.MessageBox.Name = "MessageBox";
             this.MessageBox.Size = new System.Drawing.Size(263, 20);
             this.MessageBox.TabIndex = 16;
@@ -264,7 +262,7 @@
             this.ComissionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.ComissionButton.Location = new System.Drawing.Point(595, 360);
             this.ComissionButton.Name = "ComissionButton";
-            this.ComissionButton.Size = new System.Drawing.Size(146, 48);
+            this.ComissionButton.Size = new System.Drawing.Size(166, 48);
             this.ComissionButton.TabIndex = 17;
             this.ComissionButton.Text = "Start Comission";
             this.ComissionButton.UseVisualStyleBackColor = false;
@@ -275,7 +273,7 @@
             this.ComissionBar.Location = new System.Drawing.Point(595, 414);
             this.ComissionBar.Maximum = 30;
             this.ComissionBar.Name = "ComissionBar";
-            this.ComissionBar.Size = new System.Drawing.Size(146, 28);
+            this.ComissionBar.Size = new System.Drawing.Size(166, 28);
             this.ComissionBar.TabIndex = 18;
             // 
             // Auction
@@ -283,7 +281,7 @@
             this.AcceptButton = this.SendButton;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(753, 715);
+            this.ClientSize = new System.Drawing.Size(772, 724);
             this.Controls.Add(this.ComissionBar);
             this.Controls.Add(this.ComissionButton);
             this.Controls.Add(this.MessageBox);

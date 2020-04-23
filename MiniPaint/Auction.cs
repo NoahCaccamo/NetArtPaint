@@ -18,9 +18,11 @@ namespace MiniPaint
     public partial class Auction : Form
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
+        PrivateFontCollection pfc2 = new PrivateFontCollection();
         Font gameFontS;
         Font gameFontM;
         Font gameFontL;
+        Font gameFontSpaced;
 
 
         //Font gameFont = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -354,12 +356,13 @@ namespace MiniPaint
         private void Auction_Load(object sender, EventArgs e)
         {
             pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
-            pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFontSpaced.ttf");
+            pfc2.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFontSpaced.ttf");
             //InventoryListView.View = View.LargeIcon;
 
             gameFontS = new Font(pfc.Families[0], 8, FontStyle.Regular);
             gameFontM = new Font(pfc.Families[0], 12, FontStyle.Regular);
             gameFontL = new Font(pfc.Families[0], 18, FontStyle.Regular);
+            gameFontSpaced = new Font(pfc2.Families[0], 12, FontStyle.Regular);
 
             ArtistLabel.Font = gameFontM;
             TitleLabel.Font = gameFontL;
@@ -373,10 +376,10 @@ namespace MiniPaint
             ComissionButton.Font = gameFontM;
             SendButton.Font = Font = gameFontS;
             InventoryListView.Font = Font = gameFontS;
-            ChatHistoryRichText.Font = Font = gameFontS;
-            BiddingHistoryRichText.Font = Font = gameFontS;
-            MessageBox.Font = Font = gameFontS;
-            BidEntry.Font = Font = gameFontS;
+            ChatHistoryRichText.Font = Font = gameFontSpaced;
+            BiddingHistoryRichText.Font = Font = gameFontSpaced;
+            MessageBox.Font = Font = gameFontSpaced;
+            BidEntry.Font = Font = gameFontM;
         }
 
 
