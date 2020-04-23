@@ -50,12 +50,14 @@
             // 
             // PlaceBid
             // 
-            this.PlaceBid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
+            this.PlaceBid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(89)))));
+            this.PlaceBid.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
+            this.PlaceBid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PlaceBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.PlaceBid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.PlaceBid.Location = new System.Drawing.Point(460, 568);
+            this.PlaceBid.Location = new System.Drawing.Point(376, 609);
             this.PlaceBid.Name = "PlaceBid";
-            this.PlaceBid.Size = new System.Drawing.Size(183, 87);
+            this.PlaceBid.Size = new System.Drawing.Size(215, 87);
             this.PlaceBid.TabIndex = 1;
             this.PlaceBid.Text = "Place Bid";
             this.PlaceBid.UseVisualStyleBackColor = false;
@@ -63,19 +65,22 @@
             // 
             // BuyCanvas
             // 
+            this.BuyCanvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(36)))));
+            this.BuyCanvas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
+            this.BuyCanvas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BuyCanvas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.BuyCanvas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.BuyCanvas.Location = new System.Drawing.Point(747, 568);
+            this.BuyCanvas.Location = new System.Drawing.Point(597, 609);
             this.BuyCanvas.Name = "BuyCanvas";
-            this.BuyCanvas.Size = new System.Drawing.Size(128, 87);
+            this.BuyCanvas.Size = new System.Drawing.Size(144, 87);
             this.BuyCanvas.TabIndex = 2;
             this.BuyCanvas.Text = "Buy Canvas  (30 bucks)";
-            this.BuyCanvas.UseVisualStyleBackColor = true;
+            this.BuyCanvas.UseVisualStyleBackColor = false;
             this.BuyCanvas.Click += new System.EventHandler(this.BuyCanvas_Click);
             // 
             // BidEntry
             // 
-            this.BidEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(89)))));
+            this.BidEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
             this.BidEntry.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.BidEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.BidEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
@@ -84,7 +89,7 @@
             0,
             0,
             0});
-            this.BidEntry.Location = new System.Drawing.Point(460, 533);
+            this.BidEntry.Location = new System.Drawing.Point(376, 574);
             this.BidEntry.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -96,7 +101,7 @@
             0,
             0});
             this.BidEntry.Name = "BidEntry";
-            this.BidEntry.Size = new System.Drawing.Size(183, 29);
+            this.BidEntry.Size = new System.Drawing.Size(213, 29);
             this.BidEntry.TabIndex = 3;
             this.BidEntry.Value = new decimal(new int[] {
             10,
@@ -180,12 +185,13 @@
             // InventoryListView
             // 
             this.InventoryListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(54)))));
+            this.InventoryListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.InventoryListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.InventoryListView.HideSelection = false;
-            this.InventoryListView.Location = new System.Drawing.Point(460, 99);
+            this.InventoryListView.Location = new System.Drawing.Point(376, 99);
             this.InventoryListView.MultiSelect = false;
             this.InventoryListView.Name = "InventoryListView";
-            this.InventoryListView.Size = new System.Drawing.Size(415, 287);
+            this.InventoryListView.Size = new System.Drawing.Size(365, 255);
             this.InventoryListView.TabIndex = 10;
             this.InventoryListView.UseCompatibleStateImageBehavior = false;
             this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
@@ -204,22 +210,26 @@
             // BiddingHistoryRichText
             // 
             this.BiddingHistoryRichText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(89)))));
+            this.BiddingHistoryRichText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BiddingHistoryRichText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.BiddingHistoryRichText.Location = new System.Drawing.Point(460, 392);
+            this.BiddingHistoryRichText.Location = new System.Drawing.Point(376, 360);
             this.BiddingHistoryRichText.Name = "BiddingHistoryRichText";
             this.BiddingHistoryRichText.ReadOnly = true;
-            this.BiddingHistoryRichText.Size = new System.Drawing.Size(183, 135);
+            this.BiddingHistoryRichText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.BiddingHistoryRichText.Size = new System.Drawing.Size(213, 208);
             this.BiddingHistoryRichText.TabIndex = 13;
             this.BiddingHistoryRichText.Text = "";
             // 
             // ChatHistoryRichText
             // 
             this.ChatHistoryRichText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(93)))), ((int)(((byte)(70)))));
+            this.ChatHistoryRichText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ChatHistoryRichText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.ChatHistoryRichText.Location = new System.Drawing.Point(12, 360);
             this.ChatHistoryRichText.Name = "ChatHistoryRichText";
             this.ChatHistoryRichText.ReadOnly = true;
-            this.ChatHistoryRichText.Size = new System.Drawing.Size(440, 295);
+            this.ChatHistoryRichText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.ChatHistoryRichText.Size = new System.Drawing.Size(358, 295);
             this.ChatHistoryRichText.TabIndex = 14;
             this.ChatHistoryRichText.Text = "";
             this.ChatHistoryRichText.TextChanged += new System.EventHandler(this.ChatHistoryRichText_TextChanged);
@@ -227,10 +237,12 @@
             // SendButton
             // 
             this.SendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(93)))), ((int)(((byte)(70)))));
+            this.SendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
+            this.SendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.SendButton.Location = new System.Drawing.Point(377, 674);
+            this.SendButton.Location = new System.Drawing.Point(299, 676);
             this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(75, 23);
+            this.SendButton.Size = new System.Drawing.Size(71, 20);
             this.SendButton.TabIndex = 15;
             this.SendButton.Text = "Send";
             this.SendButton.UseVisualStyleBackColor = false;
@@ -241,14 +253,16 @@
             this.MessageBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.MessageBox.Location = new System.Drawing.Point(12, 676);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(358, 20);
+            this.MessageBox.Size = new System.Drawing.Size(263, 20);
             this.MessageBox.TabIndex = 16;
             // 
             // ComissionButton
             // 
             this.ComissionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(82)))), ((int)(((byte)(37)))));
+            this.ComissionButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
+            this.ComissionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComissionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
-            this.ComissionButton.Location = new System.Drawing.Point(649, 392);
+            this.ComissionButton.Location = new System.Drawing.Point(595, 360);
             this.ComissionButton.Name = "ComissionButton";
             this.ComissionButton.Size = new System.Drawing.Size(146, 48);
             this.ComissionButton.TabIndex = 17;
@@ -258,7 +272,7 @@
             // 
             // ComissionBar
             // 
-            this.ComissionBar.Location = new System.Drawing.Point(649, 448);
+            this.ComissionBar.Location = new System.Drawing.Point(595, 414);
             this.ComissionBar.Maximum = 30;
             this.ComissionBar.Name = "ComissionBar";
             this.ComissionBar.Size = new System.Drawing.Size(146, 28);
@@ -269,7 +283,7 @@
             this.AcceptButton = this.SendButton;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(885, 704);
+            this.ClientSize = new System.Drawing.Size(753, 715);
             this.Controls.Add(this.ComissionBar);
             this.Controls.Add(this.ComissionButton);
             this.Controls.Add(this.MessageBox);
