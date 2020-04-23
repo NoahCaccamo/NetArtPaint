@@ -67,6 +67,7 @@
             this.Color3Button = new System.Windows.Forms.Button();
             this.Color4Button = new System.Windows.Forms.Button();
             this.ClientRequestLabel = new System.Windows.Forms.Label();
+            this.AnalyzeLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -428,6 +429,7 @@
             // 
             // CollectMoneyButton
             // 
+            this.CollectMoneyButton.Enabled = false;
             this.CollectMoneyButton.Location = new System.Drawing.Point(147, 402);
             this.CollectMoneyButton.Name = "CollectMoneyButton";
             this.CollectMoneyButton.Size = new System.Drawing.Size(92, 23);
@@ -435,39 +437,40 @@
             this.CollectMoneyButton.Text = "Collect Money";
             this.CollectMoneyButton.UseVisualStyleBackColor = true;
             this.CollectMoneyButton.Visible = false;
+            this.CollectMoneyButton.Click += new System.EventHandler(this.CollectMoneyButton_Click);
             // 
             // Color1Button
             // 
-            this.Color1Button.Location = new System.Drawing.Point(504, 30);
+            this.Color1Button.Location = new System.Drawing.Point(550, 30);
             this.Color1Button.Name = "Color1Button";
-            this.Color1Button.Size = new System.Drawing.Size(75, 23);
+            this.Color1Button.Size = new System.Drawing.Size(29, 23);
             this.Color1Button.TabIndex = 8;
             this.Color1Button.UseVisualStyleBackColor = true;
             this.Color1Button.Click += new System.EventHandler(this.Color1Button_Click);
             // 
             // Color2Button
             // 
-            this.Color2Button.Location = new System.Drawing.Point(504, 60);
+            this.Color2Button.Location = new System.Drawing.Point(550, 60);
             this.Color2Button.Name = "Color2Button";
-            this.Color2Button.Size = new System.Drawing.Size(75, 23);
+            this.Color2Button.Size = new System.Drawing.Size(29, 23);
             this.Color2Button.TabIndex = 9;
             this.Color2Button.UseVisualStyleBackColor = true;
             this.Color2Button.Click += new System.EventHandler(this.Color2Button_Click);
             // 
             // Color3Button
             // 
-            this.Color3Button.Location = new System.Drawing.Point(504, 93);
+            this.Color3Button.Location = new System.Drawing.Point(550, 93);
             this.Color3Button.Name = "Color3Button";
-            this.Color3Button.Size = new System.Drawing.Size(75, 23);
+            this.Color3Button.Size = new System.Drawing.Size(29, 23);
             this.Color3Button.TabIndex = 10;
             this.Color3Button.UseVisualStyleBackColor = true;
             this.Color3Button.Click += new System.EventHandler(this.Color3Button_Click);
             // 
             // Color4Button
             // 
-            this.Color4Button.Location = new System.Drawing.Point(504, 123);
+            this.Color4Button.Location = new System.Drawing.Point(550, 123);
             this.Color4Button.Name = "Color4Button";
-            this.Color4Button.Size = new System.Drawing.Size(75, 23);
+            this.Color4Button.Size = new System.Drawing.Size(29, 23);
             this.Color4Button.TabIndex = 11;
             this.Color4Button.UseVisualStyleBackColor = true;
             this.Color4Button.Click += new System.EventHandler(this.Color4Button_Click);
@@ -482,11 +485,22 @@
             this.ClientRequestLabel.Text = "ClientRequest";
             this.ClientRequestLabel.Visible = false;
             // 
+            // AnalyzeLabel
+            // 
+            this.AnalyzeLabel.AutoSize = true;
+            this.AnalyzeLabel.Location = new System.Drawing.Point(228, 363);
+            this.AnalyzeLabel.Name = "AnalyzeLabel";
+            this.AnalyzeLabel.Size = new System.Drawing.Size(35, 13);
+            this.AnalyzeLabel.TabIndex = 13;
+            this.AnalyzeLabel.Text = "label5";
+            this.AnalyzeLabel.Visible = false;
+            // 
             // Draw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 451);
+            this.Controls.Add(this.AnalyzeLabel);
             this.Controls.Add(this.ClientRequestLabel);
             this.Controls.Add(this.Color4Button);
             this.Controls.Add(this.Color3Button);
@@ -564,6 +578,7 @@
         private System.Windows.Forms.Button Color3Button;
         private System.Windows.Forms.Button Color4Button;
         private System.Windows.Forms.Label ClientRequestLabel;
+        private System.Windows.Forms.Label AnalyzeLabel;
     }
 }
 

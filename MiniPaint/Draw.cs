@@ -15,8 +15,14 @@ namespace Common
         private Random rnd = new Random();
         int numColors;
         int[] colorP = new int[4];
+        Color[] colorArray = new Color[4];
         string fullSentance;
         private Client client;
+
+        float totalPercent;
+
+        int jackpot = 1000;
+        int payout;
         public Draw(Client client, bool _isCommission)
         {
             InitializeComponent();
@@ -38,6 +44,11 @@ namespace Common
                 Color randomColor3 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
                 Color randomColor4 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
+                colorArray[0] = randomColor1;
+                colorArray[1] = randomColor2;
+                colorArray[2] = randomColor3;
+                colorArray[3] = randomColor4;
+
                 Color1Button.BackColor = randomColor1;
                 Color2Button.BackColor = randomColor2;
                 Color3Button.BackColor = randomColor3;
@@ -48,7 +59,12 @@ namespace Common
 
                 for (int i = 0; i < numColors; i++)
                 {
-                    colorP[i] = rnd.Next(0, totalP);
+                    if (totalP <= 0)
+                    {
+                        numColors--;
+                        break;
+                    }
+                    colorP[i] = rnd.Next(1, totalP);
                     totalP -= colorP[i];
 
                     if (i != numColors - 1)
@@ -256,7 +272,36 @@ namespace Common
 
         private void AnalyzeButton_Click(object sender, EventArgs e)
         {
+            AnalyzeButton.Enabled = false;
+            CollectMoneyButton.Enabled = true;
+            AnalyzeLabel.Visible = true;
 
+            Graphics grap = Graphics.FromImage(myBit);
+            Rectangle rect = pnl_Draw.RectangleToScreen(pnl_Draw.ClientRectangle);
+            grap.CopyFromScreen(rect.Location, Point.Empty, pnl_Draw.Size);
+
+            int totalPix = myBit.Width * myBit.Height;
+            totalPercent = 0;
+            for (int i = 0; i < numColors; i++)
+            {
+                int targetPix = (int)(totalPix * ((float)colorP[i] / 100f));
+                int actualPix = CountPixels(myBit, colorArray[i]);
+
+                float percentageRight;
+                if (actualPix > targetPix)
+                {
+                    percentageRight = (((float)actualPix - (float)targetPix) / (float)actualPix) * 100f;
+                } else
+                {
+                    percentageRight = (((float)actualPix - (float)targetPix) / (float)targetPix) * 100f;
+                }
+                percentageRight = Math.Abs(percentageRight);
+                totalPercent += percentageRight;
+            }
+            totalPercent = totalPercent / numColors;
+            totalPercent = 100 - totalPercent;
+            payout = (int)(jackpot * (totalPercent/100));
+            SetText(AnalyzeLabel, totalPercent + "% correct. You earn $" + payout);
         }
 
 
@@ -274,6 +319,11 @@ namespace Common
             }
         }
 
+        private void CollectMoneyButton_Click(object sender, EventArgs e)
+        {
+            Globals.playerInfo.money += payout;
+            this.Close();
+        }
     }
 
 }
