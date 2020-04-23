@@ -50,21 +50,24 @@
             // 
             // PlaceBid
             // 
+            this.PlaceBid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(52)))));
             this.PlaceBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.PlaceBid.Location = new System.Drawing.Point(12, 265);
+            this.PlaceBid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.PlaceBid.Location = new System.Drawing.Point(460, 568);
             this.PlaceBid.Name = "PlaceBid";
             this.PlaceBid.Size = new System.Drawing.Size(183, 87);
             this.PlaceBid.TabIndex = 1;
             this.PlaceBid.Text = "Place Bid";
-            this.PlaceBid.UseVisualStyleBackColor = true;
+            this.PlaceBid.UseVisualStyleBackColor = false;
             this.PlaceBid.Click += new System.EventHandler(this.PlaceBid_Click);
             // 
             // BuyCanvas
             // 
             this.BuyCanvas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.BuyCanvas.Location = new System.Drawing.Point(224, 298);
+            this.BuyCanvas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.BuyCanvas.Location = new System.Drawing.Point(747, 568);
             this.BuyCanvas.Name = "BuyCanvas";
-            this.BuyCanvas.Size = new System.Drawing.Size(127, 54);
+            this.BuyCanvas.Size = new System.Drawing.Size(128, 87);
             this.BuyCanvas.TabIndex = 2;
             this.BuyCanvas.Text = "Buy Canvas  (30 bucks)";
             this.BuyCanvas.UseVisualStyleBackColor = true;
@@ -72,14 +75,16 @@
             // 
             // BidEntry
             // 
+            this.BidEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(89)))));
             this.BidEntry.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.BidEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.BidEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.BidEntry.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.BidEntry.Location = new System.Drawing.Point(12, 230);
+            this.BidEntry.Location = new System.Drawing.Point(460, 533);
             this.BidEntry.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -103,7 +108,8 @@
             // Notifications
             // 
             this.Notifications.AutoSize = true;
-            this.Notifications.Location = new System.Drawing.Point(23, 32);
+            this.Notifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.Notifications.Location = new System.Drawing.Point(646, 29);
             this.Notifications.Name = "Notifications";
             this.Notifications.Size = new System.Drawing.Size(35, 13);
             this.Notifications.TabIndex = 4;
@@ -114,8 +120,8 @@
             // 
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.TimerLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.TimerLabel.Location = new System.Drawing.Point(21, 161);
+            this.TimerLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            this.TimerLabel.Location = new System.Drawing.Point(22, 12);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(67, 29);
             this.TimerLabel.TabIndex = 5;
@@ -125,7 +131,8 @@
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TitleLabel.Location = new System.Drawing.Point(163, 91);
+            this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.TitleLabel.Location = new System.Drawing.Point(215, 112);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(38, 20);
             this.TitleLabel.TabIndex = 6;
@@ -137,7 +144,8 @@
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.DescriptionLabel.Location = new System.Drawing.Point(144, 137);
+            this.DescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.DescriptionLabel.Location = new System.Drawing.Point(196, 228);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(79, 17);
             this.DescriptionLabel.TabIndex = 7;
@@ -147,7 +155,8 @@
             // 
             this.MoneyLabel.AutoSize = true;
             this.MoneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoneyLabel.Location = new System.Drawing.Point(220, 21);
+            this.MoneyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.MoneyLabel.Location = new System.Drawing.Point(456, 21);
             this.MoneyLabel.Name = "MoneyLabel";
             this.MoneyLabel.Size = new System.Drawing.Size(73, 24);
             this.MoneyLabel.TabIndex = 8;
@@ -156,20 +165,27 @@
             // 
             // CurrentHighLabel
             // 
+            this.CurrentHighLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentHighLabel.AutoSize = true;
-            this.CurrentHighLabel.Location = new System.Drawing.Point(13, 199);
+            this.CurrentHighLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.CurrentHighLabel.Location = new System.Drawing.Point(202, 62);
             this.CurrentHighLabel.Name = "CurrentHighLabel";
             this.CurrentHighLabel.Size = new System.Drawing.Size(63, 13);
             this.CurrentHighLabel.TabIndex = 9;
             this.CurrentHighLabel.Text = "CurrentHigh";
+            this.CurrentHighLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // InventoryListView
             // 
+            this.InventoryListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(154)))), ((int)(((byte)(54)))));
+            this.InventoryListView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
             this.InventoryListView.HideSelection = false;
-            this.InventoryListView.Location = new System.Drawing.Point(383, 161);
+            this.InventoryListView.Location = new System.Drawing.Point(460, 99);
             this.InventoryListView.MultiSelect = false;
             this.InventoryListView.Name = "InventoryListView";
-            this.InventoryListView.Size = new System.Drawing.Size(209, 272);
+            this.InventoryListView.Size = new System.Drawing.Size(415, 287);
             this.InventoryListView.TabIndex = 10;
             this.InventoryListView.UseCompatibleStateImageBehavior = false;
             this.InventoryListView.DoubleClick += new System.EventHandler(this.InventoryListView_DoubleClick);
@@ -177,7 +193,8 @@
             // ArtistLabel
             // 
             this.ArtistLabel.AutoSize = true;
-            this.ArtistLabel.Location = new System.Drawing.Point(149, 120);
+            this.ArtistLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.ArtistLabel.Location = new System.Drawing.Point(204, 184);
             this.ArtistLabel.Name = "ArtistLabel";
             this.ArtistLabel.Size = new System.Drawing.Size(61, 13);
             this.ArtistLabel.TabIndex = 11;
@@ -186,55 +203,64 @@
             // 
             // BiddingHistoryRichText
             // 
-            this.BiddingHistoryRichText.Location = new System.Drawing.Point(342, 4);
+            this.BiddingHistoryRichText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(89)))));
+            this.BiddingHistoryRichText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.BiddingHistoryRichText.Location = new System.Drawing.Point(460, 392);
             this.BiddingHistoryRichText.Name = "BiddingHistoryRichText";
             this.BiddingHistoryRichText.ReadOnly = true;
-            this.BiddingHistoryRichText.Size = new System.Drawing.Size(250, 129);
+            this.BiddingHistoryRichText.Size = new System.Drawing.Size(183, 135);
             this.BiddingHistoryRichText.TabIndex = 13;
             this.BiddingHistoryRichText.Text = "";
             // 
             // ChatHistoryRichText
             // 
-            this.ChatHistoryRichText.Location = new System.Drawing.Point(646, 76);
+            this.ChatHistoryRichText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(93)))), ((int)(((byte)(70)))));
+            this.ChatHistoryRichText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.ChatHistoryRichText.Location = new System.Drawing.Point(12, 360);
             this.ChatHistoryRichText.Name = "ChatHistoryRichText";
             this.ChatHistoryRichText.ReadOnly = true;
-            this.ChatHistoryRichText.Size = new System.Drawing.Size(285, 343);
+            this.ChatHistoryRichText.Size = new System.Drawing.Size(440, 295);
             this.ChatHistoryRichText.TabIndex = 14;
             this.ChatHistoryRichText.Text = "";
             // 
             // SendButton
             // 
-            this.SendButton.Location = new System.Drawing.Point(820, 459);
+            this.SendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(93)))), ((int)(((byte)(70)))));
+            this.SendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.SendButton.Location = new System.Drawing.Point(377, 674);
             this.SendButton.Name = "SendButton";
             this.SendButton.Size = new System.Drawing.Size(75, 23);
             this.SendButton.TabIndex = 15;
             this.SendButton.Text = "Send";
-            this.SendButton.UseVisualStyleBackColor = true;
+            this.SendButton.UseVisualStyleBackColor = false;
             this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
             // MessageBox
             // 
-            this.MessageBox.Location = new System.Drawing.Point(646, 426);
+            this.MessageBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.MessageBox.Location = new System.Drawing.Point(12, 676);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(285, 20);
+            this.MessageBox.Size = new System.Drawing.Size(358, 20);
             this.MessageBox.TabIndex = 16;
             // 
             // ComissionButton
             // 
-            this.ComissionButton.Location = new System.Drawing.Point(26, 396);
+            this.ComissionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(82)))), ((int)(((byte)(37)))));
+            this.ComissionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(34)))), ((int)(((byte)(13)))));
+            this.ComissionButton.Location = new System.Drawing.Point(649, 392);
             this.ComissionButton.Name = "ComissionButton";
-            this.ComissionButton.Size = new System.Drawing.Size(110, 23);
+            this.ComissionButton.Size = new System.Drawing.Size(146, 48);
             this.ComissionButton.TabIndex = 17;
-            this.ComissionButton.Text = "StartComission";
-            this.ComissionButton.UseVisualStyleBackColor = true;
+            this.ComissionButton.Text = "Start Comission";
+            this.ComissionButton.UseVisualStyleBackColor = false;
             this.ComissionButton.Click += new System.EventHandler(this.ComissionButton_Click);
             // 
             // ComissionBar
             // 
-            this.ComissionBar.Location = new System.Drawing.Point(26, 420);
+            this.ComissionBar.Location = new System.Drawing.Point(649, 448);
             this.ComissionBar.Maximum = 30;
             this.ComissionBar.Name = "ComissionBar";
-            this.ComissionBar.Size = new System.Drawing.Size(110, 10);
+            this.ComissionBar.Size = new System.Drawing.Size(146, 28);
             this.ComissionBar.TabIndex = 18;
             // 
             // Auction
@@ -242,7 +268,8 @@
             this.AcceptButton = this.SendButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 496);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(139)))), ((int)(((byte)(89)))));
+            this.ClientSize = new System.Drawing.Size(885, 704);
             this.Controls.Add(this.ComissionBar);
             this.Controls.Add(this.ComissionButton);
             this.Controls.Add(this.MessageBox);
@@ -260,7 +287,7 @@
             this.Controls.Add(this.BidEntry);
             this.Controls.Add(this.BuyCanvas);
             this.Controls.Add(this.PlaceBid);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Auction";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Auction_FormClosed);
