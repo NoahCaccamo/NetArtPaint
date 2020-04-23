@@ -22,6 +22,7 @@ namespace Common
             // endpoint where server is listening
             ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client.Connect(ep);
+            this.send(new Packet());
         }
 
         public void send(Packet packet)

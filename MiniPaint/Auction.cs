@@ -17,7 +17,7 @@ namespace MiniPaint
 {
     public partial class Auction : Form
     {
-        //PrivateFontCollection pfc = new PrivateFontCollection();
+        PrivateFontCollection pfc = new PrivateFontCollection();
         
         //Font gameFont = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
 
@@ -346,6 +346,7 @@ namespace MiniPaint
 
         private void Auction_Load(object sender, EventArgs e)
         {
+            pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
             //InventoryListView.View = View.LargeIcon;
         }
 

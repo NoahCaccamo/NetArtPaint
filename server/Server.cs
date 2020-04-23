@@ -55,7 +55,7 @@ namespace server
         public Packet jsRecieve()
         {
 
-            var data = udpServer.Receive(ref remoteEP);
+            var data = udpServer.ReceiveAsync(ref remoteEP);
             string p = Encoding.ASCII.GetString(data);
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
 
@@ -158,7 +158,11 @@ namespace server
         {
             //  byte[] msgBytes = Encoding.ASCII.GetBytes(msg);
             string json = JsonConvert.SerializeObject(msg);
+            Console.WriteLine(json);
             byte[] msgBytes = Encoding.ASCII.GetBytes(json);
+            string converted = Encoding.ASCII.GetString(msgBytes, 0, msgBytes.Length);
+            Console.WriteLine(converted);
+
             udpServer.Send(msgBytes, msgBytes.Length, remoteEP);
         }
 
