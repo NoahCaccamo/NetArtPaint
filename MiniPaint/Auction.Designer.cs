@@ -222,6 +222,7 @@
             this.ChatHistoryRichText.Size = new System.Drawing.Size(440, 295);
             this.ChatHistoryRichText.TabIndex = 14;
             this.ChatHistoryRichText.Text = "";
+            this.ChatHistoryRichText.TextChanged += new System.EventHandler(this.ChatHistoryRichText_TextChanged);
             // 
             // SendButton
             // 

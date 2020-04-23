@@ -15,9 +15,10 @@ namespace MiniPaint
     public partial class InvDisplay : Form
     {
         Image painting;
-        string title, artist, description, cost;
+        string title, artist, description;
+        int cost;
 
-        public InvDisplay(Image _painting, string _title, string _artist, string _description, string _cost)
+        public InvDisplay(Image _painting, string _title, string _artist, string _description, int _cost)
         {
             InitializeComponent();
             painting = _painting;

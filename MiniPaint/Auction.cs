@@ -81,7 +81,7 @@ namespace MiniPaint
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Show(); };
                 frm.Show();
-                SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
+                SetText(MoneyLabel, "Money: $" + Globals.playerInfo.money);
             }
         }
 
@@ -107,7 +107,7 @@ namespace MiniPaint
                     {
                         gotPainting = true;
                         Globals.playerInfo.money -= packet.cost;
-                        SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
+                        SetText(MoneyLabel, "Money: $" + Globals.playerInfo.money);
 
                         ImageConverter convertData = new ImageConverter();
                         Image image = (Image)convertData.ConvertFrom(packet.Painting);
@@ -132,7 +132,7 @@ namespace MiniPaint
                         gotPayout = true;
                         int reducedCut = (int)(packet.bid * 0.8);
                         Globals.playerInfo.money += reducedCut;
-                        SetText(MoneyLabel, "Money: " + Globals.playerInfo.money);
+                        SetText(MoneyLabel, "Money: $" + Globals.playerInfo.money);
                     }
 
 
@@ -191,6 +191,8 @@ namespace MiniPaint
 
         private void FetchServerTime(Object source, System.Timers.ElapsedEventArgs e)
         {
+            SetText(MoneyLabel, "Money: $" + Globals.playerInfo.money);
+
             Packet packToSend = new Packet();
             if (auctionTimer > 0)
             {
@@ -373,7 +375,6 @@ namespace MiniPaint
             BiddingHistoryRichText.Font = Font = gameFontS;
             MessageBox.Font = Font = gameFontS;
             BidEntry.Font = Font = gameFontS;
-
         }
 
 
@@ -416,7 +417,7 @@ namespace MiniPaint
                 Image image = (Image)convertData.ConvertFrom(thisPainting.Painting);
 
 
-                displayWindow = new InvDisplay(image, thisPainting.Title, thisPainting.Username, thisPainting.Description);
+                displayWindow = new InvDisplay(image, thisPainting.Title, thisPainting.Username, thisPainting.Description, thisPainting.cost);
                 displayWindow.Location = this.Location;
                 displayWindow.StartPosition = FormStartPosition.Manual;
                 displayWindow.FormClosing += delegate { this.Show(); };
@@ -456,6 +457,11 @@ namespace MiniPaint
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
+        }
+
+        private void ChatHistoryRichText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
