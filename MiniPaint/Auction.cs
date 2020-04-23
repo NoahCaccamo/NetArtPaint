@@ -169,7 +169,7 @@ namespace MiniPaint
         void startTimer()
         {
             cTimer = new System.Timers.Timer();
-            cTimer.Interval = 250;
+            cTimer.Interval = 1000;
             cTimer.Elapsed += FetchServerTime;
             cTimer.AutoReset = true;
             cTimer.Enabled = true;

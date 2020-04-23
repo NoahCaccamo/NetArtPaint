@@ -76,8 +76,8 @@ namespace server
 
         static void Main(string[] args)
         {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
-            TcpListener ServerSocket = new TcpListener(ip, 55555);
+            //IPAddress ip = IPAddress.Parse("127.0.0.1");
+            TcpListener ServerSocket = new TcpListener(IPAddress.Any, 55555);
             ServerSocket.Start();
 
             SetTimer();

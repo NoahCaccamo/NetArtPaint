@@ -60,10 +60,17 @@ namespace server
 
         public Packet jsRecieve()
         {
-            //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
-            StreamReader sReader = new StreamReader(clientSocket.GetStream(), Encoding.ASCII);
+            //BinaryReader reader = new BinaryReader(clientSocket.GetStream(), Encoding.ASCII);
+             StreamReader sReader = new StreamReader(clientSocket.GetStream(), Encoding.ASCII);
+
+
             var p = sReader.ReadLine();
+         
+
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
+
+
+
 
             Packet packToSend = new Packet();
             packToSend.Username = deserializedPacket.Username;
@@ -163,14 +170,20 @@ namespace server
         {
             //  byte[] msgBytes = Encoding.ASCII.GetBytes(msg);
 
-            //BinaryWriter writer = new BinaryWriter(clientSocket.GetStream());
+           // BinaryWriter writer = new BinaryWriter(clientSocket.GetStream(), Encoding.ASCII);
             StreamWriter sWriter = new StreamWriter(clientSocket.GetStream(), Encoding.ASCII);
 
 
             string json = JsonConvert.SerializeObject(msg);
 
+            //writer.Write(json);
+            //writer.Flush();
+           //sWriter.WriteLine(json.Length);
+
             sWriter.WriteLine(json);
             sWriter.Flush();
+            Thread.Sleep(200);
+            //sWriter.Close();
         }
 
         public int HigherBid(int UserBid, string UserName)

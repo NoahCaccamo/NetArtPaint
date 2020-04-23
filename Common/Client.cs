@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Common
 {
@@ -26,18 +27,26 @@ namespace Common
 
         public void Send(Packet packet)
         {
-            //BinaryWriter writer = new BinaryWriter(client.GetStream());
+            //BinaryWriter writer = new BinaryWriter(client.GetStream(), Encoding.ASCII);
             _sWriter = new StreamWriter(client.GetStream(), Encoding.ASCII);
             string json = JsonConvert.SerializeObject(packet);
+
+           //writer.Write(json);
+            //writer.Flush();
+            
             _sWriter.WriteLine(json);
             _sWriter.Flush();
+            
         }
 
         public Packet Recieve()
         {
-            //BinaryReader reader = new BinaryReader(client.GetStream());
+           // BinaryReader reader = new BinaryReader(client.GetStream(), Encoding.ASCII);
+
+            
             _sReader = new StreamReader(client.GetStream(), Encoding.ASCII);
-            var p = _sReader.ReadLine();
+
+            var p = _sReader.ReadToEnd();
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
             return deserializedPacket;
         }
