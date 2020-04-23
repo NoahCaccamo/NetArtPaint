@@ -18,7 +18,11 @@ namespace MiniPaint
     public partial class Auction : Form
     {
         PrivateFontCollection pfc = new PrivateFontCollection();
-        
+        Font gameFontS;
+        Font gameFontM;
+        Font gameFontL;
+
+
         //Font gameFont = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
 
         List<Packet> invPics = new List<Packet>();
@@ -45,6 +49,7 @@ namespace MiniPaint
 
         private void PlaceBid_Click(object sender, EventArgs e)
         {
+
             int userBid = Int32.Parse(BidEntry.Text);
 
             if (Globals.playerInfo.money >= userBid && auctionTimer > 0)
@@ -348,6 +353,27 @@ namespace MiniPaint
         {
             pfc.AddFontFile(System.Windows.Forms.Application.StartupPath + "\\Resources\\" + "GameFont.ttf");
             //InventoryListView.View = View.LargeIcon;
+
+            gameFontS = new Font(pfc.Families[0], 8, FontStyle.Regular);
+            gameFontM = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            gameFontL = new Font(pfc.Families[0], 18, FontStyle.Regular);
+            ArtistLabel.Font = gameFontM;
+            TitleLabel.Font = gameFontL;
+            DescriptionLabel.Font = gameFontS;
+            TimerLabel.Font = gameFontL;
+            CurrentHighLabel.Font = gameFontS;
+            MoneyLabel.Font = gameFontM;
+            Notifications.Font = gameFontM;
+            PlaceBid.Font = gameFontL;
+            BuyCanvas.Font = gameFontM;
+            ComissionButton.Font = gameFontM;
+            SendButton.Font = Font = gameFontS;
+            InventoryListView.Font = Font = gameFontS;
+            ChatHistoryRichText.Font = Font = gameFontS;
+            BiddingHistoryRichText.Font = Font = gameFontS;
+            MessageBox.Font = Font = gameFontS;
+            BidEntry.Font = Font = gameFontS;
+
         }
 
 
