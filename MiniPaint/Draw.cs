@@ -38,6 +38,10 @@ namespace Common
                 AnalyzeButton.Visible = true;
                 CollectMoneyButton.Visible = true;
                 ClientRequestLabel.Visible = true;
+                Color1Button.Visible = true;
+                Color2Button.Visible = true;
+                Color3Button.Visible = true;
+                Color4Button.Visible = true;
 
                 Color randomColor1 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
                 Color randomColor2 = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));

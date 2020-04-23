@@ -445,7 +445,9 @@
             this.Color1Button.Name = "Color1Button";
             this.Color1Button.Size = new System.Drawing.Size(29, 23);
             this.Color1Button.TabIndex = 8;
+            this.Color1Button.Text = "1";
             this.Color1Button.UseVisualStyleBackColor = true;
+            this.Color1Button.Visible = false;
             this.Color1Button.Click += new System.EventHandler(this.Color1Button_Click);
             // 
             // Color2Button
@@ -454,7 +456,9 @@
             this.Color2Button.Name = "Color2Button";
             this.Color2Button.Size = new System.Drawing.Size(29, 23);
             this.Color2Button.TabIndex = 9;
+            this.Color2Button.Text = "2";
             this.Color2Button.UseVisualStyleBackColor = true;
+            this.Color2Button.Visible = false;
             this.Color2Button.Click += new System.EventHandler(this.Color2Button_Click);
             // 
             // Color3Button
@@ -463,7 +467,9 @@
             this.Color3Button.Name = "Color3Button";
             this.Color3Button.Size = new System.Drawing.Size(29, 23);
             this.Color3Button.TabIndex = 10;
+            this.Color3Button.Text = "3";
             this.Color3Button.UseVisualStyleBackColor = true;
+            this.Color3Button.Visible = false;
             this.Color3Button.Click += new System.EventHandler(this.Color3Button_Click);
             // 
             // Color4Button
@@ -472,7 +478,9 @@
             this.Color4Button.Name = "Color4Button";
             this.Color4Button.Size = new System.Drawing.Size(29, 23);
             this.Color4Button.TabIndex = 11;
+            this.Color4Button.Text = "4";
             this.Color4Button.UseVisualStyleBackColor = true;
+            this.Color4Button.Visible = false;
             this.Color4Button.Click += new System.EventHandler(this.Color4Button_Click);
             // 
             // ClientRequestLabel

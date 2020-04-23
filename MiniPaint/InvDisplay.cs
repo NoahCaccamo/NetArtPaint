@@ -15,20 +15,22 @@ namespace MiniPaint
     public partial class InvDisplay : Form
     {
         Image painting;
-        string title, artist, description;
+        string title, artist, description, cost;
 
-        public InvDisplay(Image _painting, string _title, string _artist, string _description)
+        public InvDisplay(Image _painting, string _title, string _artist, string _description, string _cost)
         {
             InitializeComponent();
             painting = _painting;
             title = _title;
             artist = _artist;
             description = _description;
+            cost = _cost;
 
             SetPic(PaintingBox, painting);
             SetText(TitleLabel, title);
             SetText(ArtistLabel, artist);
             SetText(DescriptionLabel, description);
+            SetText(ExtraInfoLabel, "This painting was bought for $" + cost);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
