@@ -16,9 +16,13 @@ namespace Common
         int numColors;
         int[] colorP = new int[4];
         string fullSentance;
-        public Draw(bool _isCommission)
+        private Client client;
+        public Draw(Client client, bool _isCommission)
         {
             InitializeComponent();
+
+            this.client = client;
+
             myBit = new Bitmap(pnl_Draw.Width, pnl_Draw.Height);
              g = pnl_Draw.CreateGraphics();
             isCommission = _isCommission;
@@ -62,7 +66,6 @@ namespace Common
         bool startPaint = false;
         Graphics g;
         Bitmap myBit;
-        Client client = new Client(Globals.playerInfo.ip);
         //nullable int for storing Null value
         int? initX = null;
         int? initY = null;
@@ -201,7 +204,7 @@ namespace Common
                 newPacket.Title = TitleBox.Text;
                 newPacket.Description = DescriptionBox.Text;
                 newPacket.Username = Globals.playerInfo.username;
-                client.send(newPacket);
+                client.Send(newPacket);
                 //myBit.Save(@"C:\Users\ncaccamo\Music\test.png", ImageFormat.Png);
                 this.Close();
             }

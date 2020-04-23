@@ -11,68 +11,35 @@ namespace Common
 {
     public class Client
     {
-        private UdpClient client;
+        private TcpClient client;
         private IPEndPoint ep;
+
+        private StreamReader _sReader;
+        private StreamWriter _sWriter;
 
         /// <param name="ip"> The ip of the server to connect to </param>
         /// <param name="port"> Port the server is running on </param>
         public Client(string ip = "127.0.0.1", int port = 55555)
         {
-            client = new UdpClient();
-            // endpoint where server is listening
-            ep = new IPEndPoint(IPAddress.Parse(ip), port);
-            client.Connect(ep);
-            this.send(new Packet());
+            client = new TcpClient("127.0.0.1", port);
         }
 
-        public void send(Packet packet)
+        public void Send(Packet packet)
         {
-            // send data
-
-            var ms = new MemoryStream();
-            //Bitmap bmp = new Bitmap(path, true);
-           // packet.Painting.Save(ms, ImageFormat.Jpeg);
-
+            //BinaryWriter writer = new BinaryWriter(client.GetStream());
+            _sWriter = new StreamWriter(client.GetStream(), Encoding.ASCII);
             string json = JsonConvert.SerializeObject(packet);
-            byte[] msgBytes = Encoding.ASCII.GetBytes(json);
-           // byte[] byteArray = ms.ToArray();
-            client.Send(msgBytes, msgBytes.Length);
-
+            _sWriter.WriteLine(json);
+            _sWriter.Flush();
         }
 
         public Packet Recieve()
         {
-            // then receive data
-            var receivedData = client.Receive(ref ep);
-            string p = Encoding.ASCII.GetString(receivedData);
+            //BinaryReader reader = new BinaryReader(client.GetStream());
+            _sReader = new StreamReader(client.GetStream(), Encoding.ASCII);
+            var p = _sReader.ReadLine();
             Packet deserializedPacket = JsonConvert.DeserializeObject<Packet>(p);
-
             return deserializedPacket;
-            //int receivedInt = Int32.Parse(Encoding.ASCII.GetString(receivedData));
-
-
-            //Console.WriteLine("receive data from " + ep.ToString());
-            //Console.WriteLine("Received: " + Encoding.ASCII.GetString(receivedData));
-
         }
-        public void Bid(int UserInput)
-        {
-        //    UserInput = 
-        }
-
-      //  static void Main(string[] args)
-      //  {
-          //  var client = new Client("25.133.204.102");
-
-           // string msg = null;
-
-           // while (msg != "exit")
-           // {
-              //  Console.Write("Enter image path: ");
-              //  msg = Console.ReadLine();
-
-              //  client.send(msg);
-          //  }
-      //  }
     }
 }

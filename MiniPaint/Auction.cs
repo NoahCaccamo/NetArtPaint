@@ -54,7 +54,7 @@ namespace MiniPaint
                 packetToSend.Type = (int)Packet.pType.Bid;
                 packetToSend.bid = userBid;
 
-                client.send(packetToSend);
+                client.Send(packetToSend);
                 unpack(client.Recieve());
 
             }
@@ -71,7 +71,7 @@ namespace MiniPaint
             if (Globals.playerInfo.money >= 500)
             {
                 Globals.playerInfo.money -= 500;
-                var frm = new Draw(false);
+                var frm = new Draw(client, false);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
                 frm.FormClosing += delegate { this.Show(); };
@@ -199,7 +199,7 @@ namespace MiniPaint
             packToSend.Username = Globals.playerInfo.username;
 
 
-            client.send(packToSend);
+            client.Send(packToSend);
             unpack(client.Recieve());
             
             //chatUpdater();
@@ -224,7 +224,7 @@ namespace MiniPaint
             Packet packToSend = new Packet();
             packToSend.Type = (int)Packet.pType.RequestChat;
             packToSend.Username = Globals.playerInfo.username;
-            client.send(packToSend);
+            client.Send(packToSend);
             unpack(client.Recieve());
         }
 
@@ -411,7 +411,7 @@ namespace MiniPaint
 
                 MessageBox.Clear();
 
-                client.send(packetToSend);
+                client.Send(packetToSend);
                 unpack(client.Recieve());
             }
         }
@@ -425,7 +425,7 @@ namespace MiniPaint
         {
             ComissionButton.Enabled = false;
             ComissionBar.Value = 0;
-            var frm = new Draw(true);
+            var frm = new Draw(client, true);
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
